@@ -1,0 +1,1433 @@
+<!DOCTYPE html>
+<html lang="zh-Hant-TW">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>南投縣新豐國小特教資源網｜鑑定提報・IEP會議預約・特教宣導與支持服務</title>
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com/3.4.17"></script>
+  <!-- Google Fonts: Noto Sans TC & Inter -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Noto+Sans+TC:wght@400;500;700;900&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --font-scale: 1;
+      --primary: #00897b;
+      --primary-dark: #0f766e;
+      --bg-warm: #FAFDFC;
+      --mint-bg: #f0fdfa;
+      --mint-border: #ccfbf1;
+    }
+    body {
+      font-family: 'Noto Sans TC', 'Inter', 'Microsoft JhengHei', sans-serif;
+      background-color: var(--bg-warm);
+      color: #1E293B;
+      overflow-x: hidden;
+    }
+    .scalable-text {
+      font-size: calc(1rem * var(--font-scale));
+      line-height: calc(1.75rem * var(--font-scale));
+    }
+    .warm-card {
+      background: #FFFFFF;
+      border: 2px solid #CCFBF1;
+      border-radius: 20px;
+      box-shadow: 0 6px 20px -4px rgba(0, 137, 123, 0.07);
+      transition: transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease;
+    }
+    .warm-card-hover:hover {
+      transform: translateY(-2px);
+      border-color: #5EEAD4;
+      box-shadow: 0 12px 24px -6px rgba(0, 137, 123, 0.13);
+    }
+    .custom-scrollbar::-webkit-scrollbar {
+      width: 6px;
+      height: 6px;
+    }
+    .custom-scrollbar::-webkit-scrollbar-track {
+      background: #F0FDFA;
+    }
+    .custom-scrollbar::-webkit-scrollbar-thumb {
+      background: #99F6E4;
+      border-radius: 9999px;
+    }
+  </style>
+</head>
+<body class="min-h-screen flex flex-col selection:bg-teal-200 selection:text-teal-950">
+
+  <!-- Header -->
+  <header class="sticky top-0 z-40 bg-white/95 backdrop-blur border-b-2 border-teal-100 shadow-xs">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 py-3 flex flex-wrap items-center justify-between gap-3">
+      <!-- Brand Identity -->
+      <div class="flex items-center gap-3 cursor-pointer group" id="brandHomeTrigger">
+        <div class="w-11 h-11 rounded-2xl bg-gradient-to-br from-teal-500 to-emerald-600 flex items-center justify-center text-white text-xl font-black shadow-sm group-hover:scale-105 transition">
+          🌱
+        </div>
+        <div>
+          <div class="flex items-center gap-2">
+            <h1 class="text-lg sm:text-xl font-black text-teal-900 tracking-tight" id="headerSiteTitle">
+              南投縣新豐國小特教網
+            </h1>
+            <span class="hidden md:inline-block text-xs font-bold px-2.5 py-0.5 rounded-full bg-teal-50 text-teal-800 border border-teal-200">
+              溫馨支持・共融成長
+            </span>
+          </div>
+          <p class="text-xs text-slate-500 hidden sm:block">
+            整合校內鑑定提報・內建 IEP 會議預約系統・特教宣導與專業團隊介紹
+          </p>
+        </div>
+      </div>
+
+      <!-- Search & Utility Controls -->
+      <div class="flex items-center gap-2 flex-1 sm:flex-initial justify-end">
+        <div class="relative w-full sm:w-56 md:w-64">
+          <span class="absolute left-3 top-1/2 -translate-y-1/2 text-teal-600 text-sm pointer-events-none">🔍</span>
+          <input
+            id="globalSearchInput"
+            type="search"
+            placeholder="搜尋表單、辦法、正向行為支持..."
+            class="w-full pl-9 pr-7 py-1.5 text-xs sm:text-sm rounded-full border-2 border-teal-100 bg-teal-50/50 text-slate-800 placeholder-slate-400 focus:bg-white focus:outline-none focus:border-teal-500 transition"
+          />
+          <button id="clearSearchBtn" type="button" class="hidden absolute right-2.5 top-1/2 -translate-y-1/2 text-slate-400 hover:text-slate-600 text-xs">
+            ✕
+          </button>
+        </div>
+
+        <button id="btnCloudDirectory" type="button" class="shrink-0 flex items-center gap-1 px-3 py-1.5 rounded-full text-xs sm:text-sm font-bold bg-amber-50 hover:bg-amber-100 text-amber-900 border-2 border-amber-200 transition" title="全站雲端連結一覽">
+          <span>📂</span>
+          <span class="hidden md:inline">雲端總覽</span>
+        </button>
+
+        <button id="btnFontScale" type="button" class="shrink-0 flex items-center gap-1 px-3 py-1.5 rounded-full text-xs sm:text-sm font-bold bg-teal-50 hover:bg-teal-100 text-teal-900 border-2 border-teal-200 transition" title="切換字體大小">
+          <span>🔍</span>
+          <span id="fontScaleLabel">字級：標準</span>
+        </button>
+      </div>
+    </div>
+
+    <!-- Navigation Bar -->
+    <nav class="bg-teal-50/60 border-t border-teal-100 px-4 sm:px-6 py-2">
+      <div class="max-w-6xl mx-auto flex items-center gap-2 overflow-x-auto custom-scrollbar" id="mainNavContainer">
+        <!-- Populated by JS -->
+      </div>
+    </nav>
+  </header>
+
+  <!-- Global Search Results Drawer -->
+  <section id="searchResultsSection" class="hidden max-w-6xl w-full mx-auto px-4 sm:px-6 pt-5">
+    <div class="warm-card p-5 border-amber-300 bg-amber-50/40 space-y-3">
+      <div class="flex items-center justify-between border-b border-amber-200 pb-2.5">
+        <div class="flex items-center gap-2">
+          <span class="text-lg">🔎</span>
+          <h2 class="font-black text-slate-800 text-sm sm:text-base">
+            全站快速搜尋結果：<span id="searchKeywordDisplay" class="text-teal-700"></span>
+          </h2>
+        </div>
+        <button id="closeSearchBtn" type="button" class="px-3 py-1 rounded-full text-xs font-bold bg-white hover:bg-slate-100 text-slate-700 border border-slate-200">
+          關閉 ✕
+        </button>
+      </div>
+      <div id="searchResultsGrid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-3"></div>
+    </div>
+  </section>
+
+  <main class="flex-1 max-w-6xl w-full mx-auto px-4 sm:px-6 py-6 space-y-6" id="mainViewport">
+    <!-- Populated by JS -->
+  </main>
+
+  <!-- Cloud Directory Modal -->
+  <div id="cloudModal" class="fixed inset-0 z-50 hidden bg-slate-900/50 backdrop-blur-xs flex items-center justify-center p-4">
+    <div class="bg-white rounded-3xl max-w-3xl w-full max-h-[82vh] flex flex-col shadow-2xl border-2 border-teal-200 overflow-hidden">
+      <div class="px-6 py-4 bg-gradient-to-r from-teal-600 to-emerald-600 text-white flex items-center justify-between">
+        <div class="flex items-center gap-2.5">
+          <span class="text-2xl">📂</span>
+          <div>
+            <h3 class="font-black text-base sm:text-lg">全站表單與雲端資料夾快速目錄</h3>
+            <p class="text-xs text-teal-100">點擊即可直接開啟對應 Google 表單、雲端硬碟或複製連結</p>
+          </div>
+        </div>
+        <button id="btnCloseCloudModal" type="button" class="w-8 h-8 rounded-full bg-white/20 hover:bg-white/30 flex items-center justify-center text-white font-bold">
+          ✕
+        </button>
+      </div>
+      <div class="p-5 overflow-y-auto custom-scrollbar space-y-2.5 flex-1" id="cloudModalBody"></div>
+    </div>
+  </div>
+
+  <!-- Footer -->
+  <footer class="bg-white border-t-2 border-teal-100 mt-12">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 py-6 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs sm:text-sm text-slate-500">
+      <div class="flex items-center gap-2">
+        <span class="text-lg">🌱</span>
+        <span class="font-bold text-teal-900">南投縣新豐國小特教資源網</span>
+        <span>｜</span>
+        <span>溫暖接納・專業支持</span>
+      </div>
+      <div class="text-xs text-slate-400">
+        南投縣新豐國民小學 特殊教育團隊
+      </div>
+    </div>
+  </footer>
+
+  <!-- Toast Notification -->
+  <div id="toastBox" class="fixed bottom-5 right-5 z-50 hidden bg-teal-900 text-white px-4 py-3 rounded-2xl shadow-xl border-2 border-teal-300 flex items-center gap-2 text-xs sm:text-sm font-bold">
+    <span id="toastIcon">✨</span>
+    <span id="toastText">系統提示</span>
+  </div>
+
+  <script>
+    const GAS_WEB_APP_URL = "https://script.google.com/macros/s/AKfycbyNDaz-ZJSkwa0F6aoxpIr6GyFBPENFfmvJsDHCY6edaXFmWyKf9Rq22CVuGGIcnmuOvQ/exec";
+
+    const SITE_CONFIG = {
+      siteInfo: {
+        schoolName: "南投縣新豐國小",
+        siteTitle: "南投縣新豐國小特教網",
+        portalTitle: "新豐國小特殊教育資源整合平台",
+        heroSubtitle: "溫暖支持每一位獨特的孩子，陪伴親師生共融成長",
+        announcement: "🔔 溫馨提醒：導師填寫「鑑定安置新個案提報調查」線上表單後，請記得主動通知特教教師喔！"
+      },
+      referralZone: {
+        mainForm: {
+          title: "鑑定安置新個案提報調查",
+          badge: "校內鑑定提報表單（填完請通知特教教師）",
+          description: "若班級導師觀察到學生有疑似特殊教育需求，請點選按鈕填寫線上提報調查表，並聯繫特教老師進行初步觀察與討論。",
+          url: "https://docs.google.com/forms/d/e/1FAIpQLSeo4a_N0HT9OShw9n2PJVaAT0sMdwX53qzdRumLhNIIPXHsrg/viewform?usp=dialog"
+        },
+        manualPdf: {
+          title: "鑑定辦法說明手冊.pdf",
+          description: "完整收錄各障礙類別鑑定基準、評估流程與提報應備文件說明。",
+          url: "https://drive.google.com/file/d/1kqvL-7IYn5pWNIDcIEB_3nguqULYkVkQ/view?usp=drive_link"
+        },
+        cloudFolders: [
+          { id: "ld", icon: "📘", name: "學習障礙提報相關", categoryBadge: "學習障礙", description: "學習障礙轉介前介入紀錄、觀察表件與提報檔案。", url: "https://drive.google.com/drive/folders/1hUWeFRXGhU0LWsKZy4fS2fBCrbD67EbL" },
+          { id: "ebd", icon: "🧡", name: "情緒障礙提報相關", categoryBadge: "情緒行為障礙", description: "情緒行為障礙觀察紀錄、行為功能分析與轉介表件。", url: "https://drive.google.com/drive/folders/17zuHswvRHE3XNZ2e6XaJQEeJij0rH4SL" },
+          { id: "id", icon: "🌱", name: "智能障礙提報相關", categoryBadge: "智能障礙", description: "智能障礙適應行為觀察、學習能力評估與提報表件。", url: "https://drive.google.com/drive/folders/1Jwrja0F1kAMGbar9A4ob11BmzpG14Aqf" },
+          { id: "asd", icon: "🧩", name: "自閉症提報相關", categoryBadge: "自閉症", description: "自閉症人際互動、溝通與固著行為觀察及提報表件。", url: "https://drive.google.com/drive/folders/1f72loA6pU_J1j98LEXaG0xM6JdKXPS7i" }
+        ],
+        criteriaCategories: [
+          {
+            id: "ld",
+            icon: "📘",
+            title: "學習障礙辦法與鑑定基準",
+            shortName: "學習障礙",
+            folderUrl: "https://drive.google.com/drive/folders/1hUWeFRXGhU0LWsKZy4fS2fBCrbD67EbL",
+            legalArticle: "依據《身心障礙及資賦優異學生鑑定辦法》第 10 條",
+            legalDefinition: "本法第三條第九款所稱學習障礙，統稱神經心理功能異常而顯現出注意、記憶、理解、知覺、知覺動作、推理等能力有問題，致在聽、說、讀、寫或算等學習上有顯著困難者；其障礙並非因感官、智能、情緒等障礙因素或文化刺激不足、教學不當等環境因素所直接造成之結果。",
+            criteriaIntro: "前項所定學習障礙，其鑑定基準依下列各款規定：",
+            criteriaPoints: [
+              "一、智力正常或在正常程度以上：指學生之認知發展及整體智力表現達一般常態水準。",
+              "二、個人內在能力有顯著差異：指學生之認知能力與學業成就表現間有顯著差距。",
+              "三、聽覺理解、口語表達、識字、閱讀理解, 書寫、數學運算等學習表現有顯著困難，且經確定一般教育所提供之介入，仍難有效改善。"
+            ],
+            subtypes: [
+              { name: "閱讀障礙（識字與理解困難）", desc: "認字量明顯少於同年級學生、字音與字形連結困難，朗讀時常跳字、漏行或唸錯。" },
+              { name: "書寫表達障礙（寫字與寫作困難）", desc: "字形結構鬆散、部首顛倒、筆畫增減或鏡像字，抄寫極慢且組織困難。" },
+              { name: "數學學習障礙（數感與運算困難）", desc: "數概念與位值概念薄弱、基本運算事實無法自動化提取。" },
+              { name: "知覺動作與非語文學習困難", desc: "手眼協調、空間方位辨識、視覺動作統整或推理思考明顯落後。" }
+            ],
+            observationGroups: [
+              { groupTitle: "一、識字與閱讀理解方面（讀）", items: ["學過的生字詞反覆教導與練習後仍極易遺忘，認字量明顯少於同儕。", "經常混淆形近字、同音字或多音字。", "朗讀課文時速度緩慢、結巴不流暢，常出現跳行、漏字。"] },
+              { groupTitle: "二、書寫與文字表達方面（寫）", items: ["寫字時常出現部首左右顛倒、筆畫多一畫或少一畫。", "視覺動作協調與精細動作較弱，抄寫聯絡簿速度極慢。", "聽寫表現與口語問答差距極大。"] },
+              { groupTitle: "三、數學概念與運算推理方面（算）", items: ["基本數感、數序與位值概念薄弱。", "加減法與九九乘法口訣難以自動化提取。", "進行直式計算時常對錯位、忘記進退位。"] }
+            ],
+            exclusionFactors: ["一、感官障礙因素", "二、智能障礙因素", "三、情緒與環境因素"],
+            referralRequirements: ["轉介前介入（RTI）：普通班進行至少一學期之補救教學與教學調整。", "提報應備佐證資料：轉介前介入紀錄、平時考卷、習作等。"]
+          },
+          {
+            id: "ebd",
+            icon: "🧡",
+            title: "情緒行為障礙辦法與鑑定基準",
+            shortName: "情緒行為障礙",
+            folderUrl: "https://drive.google.com/drive/folders/17zuHswvRHE3XNZ2e6XaJQEeJij0rH4SL",
+            legalArticle: "依據《身心障礙及資賦優異學生鑑定辦法》第 9 條",
+            legalDefinition: "本法第三條第八款所稱情緒行為障礙，指長期情緒或行為表現顯著異常，嚴重影響學校適應者；其障礙非因智能、感官或健康等因素直接造成之結果。",
+            criteriaIntro: "前項所定情緒行為障礙，其鑑定基準依下列各款規定：",
+            criteriaPoints: ["一、情緒或行為表現顯著異於其同齡及文化常態。", "二、除學校外，在家庭、社區或任一情境中顯現適應困難。", "三、在學業、社會、人際適應有顯著困難。"],
+            subtypes: [
+              { name: "注意力缺陷過動症 (ADHD)", desc: "持續性注意力不足、粗心忘東忘西，或伴隨過動、衝動插話。" },
+              { name: "外向性行為問題", desc: "公然反抗師長指令、言語或肢體攻擊、破壞物品。" },
+              { name: "內向性情緒問題", desc: "長期過度焦慮、畏懼上學、選擇性不語或退縮。" }
+            ],
+            observationGroups: [
+              { groupTitle: "一、外向性行為與衝動控制表現", items: ["上課頻繁扭動身體、離席走動。", "衝動控制困難，常在問題未問完時搶答。", "挫折忍受度極低，容易出現情緒爆發。"] }
+            ],
+            exclusionFactors: ["須排除因近期短期生活壓力事件所引起之暫時性情緒波動。"],
+            referralRequirements: ["提報前須經過導師調整與輔導室介入至少六個月，並詳實記錄 ABCR 紀錄。"]
+          },
+          {
+            id: "id",
+            icon: "🌱",
+            title: "智能障礙辦法與鑑定基準",
+            shortName: "智能障礙",
+            folderUrl: "https://drive.google.com/drive/folders/1Jwrja0F1kAMGbar9A4ob11BmzpG14Aqf",
+            legalArticle: "依據《身心障礙及資賦優異學生鑑定辦法》第 3 條",
+            legalDefinition: "本法第三條第一款所稱智能障礙，指個人之智能發展較同年齡者明顯遲緩，且在學習及生活適應能力表現上有顯著困難者。",
+            criteriaIntro: "前項所定智能障礙，其鑑定基準依下列各款規定：",
+            criteriaPoints: ["一、心智功能明顯低下或個別智力測驗結果未達平均數負二個標準差。", "二、學生在學習及生活適應能力表現上有顯著困難。"],
+            subtypes: [{ name: "概念、社會與實務適應技能領域", desc: "涵蓋語言理解、學業、人際交往與日常生活自理能力。" }],
+            observationGroups: [
+              { groupTitle: "一、認知與適應表現", items: ["全面性學習緩慢，對於抽象概念與邏輯推理有顯著困難。", "短期與長期記憶較弱。", "生活自理能力與同齡學生明顯落後。"] }
+            ],
+            exclusionFactors: ["須同時考量標準化個別智力測驗與日常適應行為表現。"],
+            referralRequirements: ["提報應備資料：記錄學習表現、生活自理及人際互動之具體觀察實例。"]
+          },
+          {
+            id: "asd",
+            icon: "🧩",
+            title: "自閉症辦法與鑑定基準",
+            shortName: "自閉症",
+            folderUrl: "https://drive.google.com/drive/folders/1f72loA6pU_J1j98LEXaG0xM6JdKXPS7i",
+            legalArticle: "依據《身心障礙及資賦優異學生鑑定辦法》第 12 條",
+            legalDefinition: "本法第三條第十一款所稱自閉症，指因神經心理功能異常而顯現出溝通、社會互動、行為及興趣表現上有嚴重問題，致在學習及生活適應上有顯著困難者。",
+            criteriaIntro: "前項所定自閉症，其鑑定基準依下列各款規定：",
+            criteriaPoints: ["一、顯著社會互動及溝通困難。", "二、表現出固著性、侷限性、重複性之行為、興趣或活動。"],
+            subtypes: [{ name: "社會溝通與固著行為特質", desc: "難察覺他人言外之意、雙向對話困難，或對特定主題高度執著、堅持固定作息。" }],
+            observationGroups: [
+              { groupTitle: "一、社會互動與固著表現", items: ["與人交談時眼神接觸較少。", "傾向單向談論自己感興趣的特定話題。", "對日常作息有強烈固著性，遇臨時變更易產生強烈焦慮。"] }
+            ],
+            exclusionFactors: ["須綜合評估學生在自然校園情境中之社會溝通與固著行為表現。"],
+            referralRequirements: ["提報應備資料：記錄人際互動對話實例、固著興趣及面對作息改變之反應。"]
+          }
+        ]
+      },
+      advocacyResources: {
+        featuredCloudDocs: [
+          { icon: "📘", title: "「面對多元學生的因應與調整」研習成果冊", tag: "校內特教研習成果冊", description: "新豐國小教師特教知能研習成果彙編，提供面對多元特質學生的課程與班級經營調整實務。", url: "https://drive.google.com/file/d/1CS6SAXx93X_-KVOu7kseBoy2pzXPDYQf/view?usp=sharing" },
+          { icon: "🏫", title: "南投縣政府教育處融合教育宣導簡報", tag: "融合教育宣導簡報", description: "認識融合教育核心精神、普通班與特教資源班合作模式及接納支持策略。", url: "https://drive.google.com/file/d/1534vk5S9zRVHGpVzuvjowa4saLHVEbFG/view" },
+          { icon: "🌍", title: "身心障礙者權利公約 (CRPD) 宣導資源包", tag: "CRPD 宣導教材", description: "聯合國身心障礙者權利公約八大原則、合理調整概念與校園實踐宣導資源。", url: "https://drive.google.com/file/d/1VQRp2vOSNZ3skQjI1jCyfCk2u9aa559W/view" }
+        ],
+        articles: [
+          { icon: "📰", title: "早期療育及兒童青少年心理衛生資訊（王意中部落格）", author: "王意中 臨床心理師", category: "專欄入口網站", summary: "豐富完整的早期療育、專注力訓練、自閉症與情緒行為輔導實務文章寶庫。", url: "https://atozwyc.pixnet.net/blog" },
+          { icon: "💢", title: "孩子怎麼生氣，你才不會生氣？別再忽視情緒表達這件事", author: "王意中 臨床心理師", category: "情緒調節與輔導", summary: "引導大人理解孩子生氣背後的需求，教導孩子用適當、安全的方式表達情緒。", url: "https://atozwyc.pixnet.net/blog/posts/16094215562" },
+          { icon: "💧", title: "別再告訴孩子：你不要再哭了！孩子哭，到底要告訴我們什麼事？", author: "王意中 臨床心理師", category: "同理傾聽與溝通", summary: "眼淚是孩子重要的情緒訊號，先接納並同理孩子的委屈與挫折，才能建立安全感。", url: "https://atozwyc.pixnet.net/blog/posts/16094215481" }
+        ],
+        therapistsLegalBasis: "依據《特殊教育支持服務及專業團隊運作辦法》第四條：專業團隊由特殊教育教師、普通教育教師、特殊教育相關專業人員及學校行政人員組成，依學生需求提供統整性之特殊教育及相關支持服務。",
+        therapists: [
+          { role: "職能治療師 (OT)", icon: "✋", targetStudents: "動作協調、書寫精細動作、感覺統合、生活自理或社交互動需強化之學生", services: ["強化身體協調訓練與姿勢控制穩定度", "精細動作拆解訓練", "視覺與視知覺訓練", "生活自理能力訓練"] },
+          { role: "語言治療師 (ST)", icon: "🗣️", targetStudents: "構音異常、語言理解與表達遲緩、語暢異常或吞嚥困難之學生", services: ["協助正確發音與構音矯正訓練", "提升口語理解能力與完整句型表達", "改善說話流暢度", "規劃替代性溝通策略"] },
+          { role: "物理治療師 (PT)", icon: "🏃", targetStudents: "動作發展遲緩、腦性麻痺或肢體障礙等粗動作與移行需協助之學生", services: ["粗動作控制訓練", "四肢協調與肌耐力訓練", "校園無障礙環境動線與行動輔具評估調整"] },
+          { role: "臨床心理師 (CP)", icon: "💚", targetStudents: "出現情緒崩潰、社交挫折、衝動控制困難、退縮焦慮之學生", services: ["針對情緒崩潰與高度焦慮提供心理支持策略", "協助改善社交挫折", "擬定正向行為輔導建議"] }
+        ],
+        assistants: {
+          intro: "特教學生助理員在教師督導下，協助身心障礙學生在校園中的生活自理、課程參與及安全維護：",
+          duties: [
+            { title: "一、生活自理協助", icon: "🍱", items: ["協助個人衛生清潔、如廁訓練與衣物穿脫", "協助午餐準備與餵食指導", "協助擺位與行動輔具操作"] },
+            { title: "二、學習與活動參與", icon: "📚", items: ["協助學生按作息時間進行學習", "協助參與課堂學習與操作教具", "支持參與班級團體活動"] },
+            { title: "三、校園安全維護", icon: "🛡️", items: ["維護學生在教室與下課安全", "協助轉換教室時之移動安全"] },
+            { title: "四、偶發與行為支援", icon: "🤝", items: ["配合執行特殊健康照護與緊急事件處理", "配合執行正向情緒行為問題處理策略"] }
+          ]
+        },
+        behaviorStrategies: {
+          abcSource: "引用自：鈕文英《行為問題診斷》── 行為問題可能發生的環境因素與功能分析",
+          abcAnalysis: [
+            { stage: "A 前事與環境因素 (Antecedent)", badge: "誘發情境", points: ["物理環境刺激：噪音過大、光線刺眼、空間擁擠。", "課程與任務因素：教材難度過高、作業量太大、活動轉換缺乏預告。", "人際與身心狀態：同儕言語衝突、生理疲勞、飢餓。"] },
+            { stage: "B 行為表現與可能功能 (Behavior & Function)", badge: "行為動機", points: ["獲得外在關注或物品：希望吸引師長注意。", "逃避或推遲嫌惡刺激：想逃避困難功課或緊張社交。", "感官知覺與內在調節：尋求特定感官刺激或宣洩焦慮。"] },
+            { stage: "C 後果與預防調整 (Consequence & Prevention)", badge: "介入策略", points: ["前事調整：預告作息改變、提供視覺結構提示。", "教導替代行為：教導舉手或出示休息卡。", "後果處理：展現正向替代行為時立即給予肯定。"] }
+          ],
+          crisisSource: "修改自：臺師大特教系《學生爆發性行為處理策略》── 三階段危機處理流程建議",
+          crisisPhases: [
+            { phase: "第一階段：行為前兆出現（焦躁期）", goal: "及早覺察訊號、降低環境刺激、溫和轉移注意力", steps: ["敏銳觀察前兆：留意皺眉、握拳、坐立不安。", "表達同理與傾聽：用平穩低柔語調靠近。", "提供選擇與緩衝：允許短暫喝水、深呼吸、去冷靜角休息。"] },
+            { phase: "第二階段：行為高峰當下（爆發期）", goal: "確保人身安全第一、減少語言刺激、移除危險物品", steps: ["環境安全控管：立即移開周圍易碎物品。", "保持冷靜與安全距離：維持情緒平穩、不說教。", "啟動支援機制：通知特教老師或學務處。"] },
+            { phase: "第三階段：行為高峰之後（平復與重建期）", goal: "等待情緒完全平復、修復關係、練習正向替代行為", steps: ["給予安靜平復時間：確認穩定後再談話。", "協助整理環境與關係修復。", "事後檢討與行為演練。"] }
+          ]
+        },
+        pbsFolder: {
+          title: "正向行為支持 (PBS) 行為功能介入表件資料夾",
+          folderUrl: "https://drive.google.com/drive/folders/1JnJ6j12pK2RYgNhysmEtNmWUHLAUz9Y_",
+          description: "收錄校內實施正向行為支持（PBS）所需之 ABCR 行為觀察紀錄表、範例、七階段策略與量表。",
+          files: [
+            { name: "1.ABCR行為觀察紀錄.docx", type: "Word 表件", desc: "空白可編輯之 ABCR 行為觀察紀錄表。", url: "https://drive.google.com/file/d/1fL8pMPG9NbIzqzQ1FFKarTKNl9Bo0cVN/view" },
+            { name: "1.ABCR記錄表-範例.pdf", type: "PDF 範例", desc: "提供實際填寫示範。", url: "https://drive.google.com/drive/folders/1JnJ6j12pK2RYgNhysmEtNmWUHLAUz9Y_" },
+            { name: "1.七階段特徵及策略.pdf", type: "PDF 指南", desc: "詳列行為問題發展七階段之特徵與對應策略。", url: "https://drive.google.com/drive/folders/1JnJ6j12pK2RYgNhysmEtNmWUHLAUz9Y_" },
+            { name: "教師教學與班級經營策略表.docx", type: "Word 表件", desc: "提供普通班與特教教師檢視與調整教學策略表。", url: "https://drive.google.com/drive/folders/1JnJ6j12pK2RYgNhysmEtNmWUHLAUz9Y_" },
+            { name: "班級經營檢核表-國中小.doc", type: "Word 表件", desc: "國中小班級經營與正向支持環境自我檢核表。", url: "https://drive.google.com/drive/folders/1JnJ6j12pK2RYgNhysmEtNmWUHLAUz9Y_" },
+            { name: "行為動機評量表.doc", type: "Word 量表", desc: "協助評估學生問題行為背後主要動機之量表。", url: "https://drive.google.com/drive/folders/1JnJ6j12pK2RYgNhysmEtNmWUHLAUz9Y_" }
+          ]
+        }
+      },
+      goodLinks: {
+        items: [
+          { icon: "🏛️", title: "南投縣特教資源中心", category: "官方行政與鑑定資源", description: "南投縣政府特殊教育資源中心官方網站。", url: "https://spec.ntct.edu.tw/" },
+          { icon: "🌐", title: "全國特教資訊網", category: "官方行政與鑑定資源", description: "教育部全國特殊教育資訊網。", url: "https://special.moe.gov.tw/" },
+          { icon: "🎬", title: "特殊教育多媒體教材交流社團", category: "教材與社群交流", description: "Facebook 特教教師社群。", url: "https://www.facebook.com/groups/1494494560599892/" },
+          { icon: "💡", title: "特教老師的好點子 x MSJ special idea", category: "教材與社群交流", description: "分享豐富實用的資源班教學創意。", url: "https://www.facebook.com/people/%E7%89%B9%E6%95%99%E8%80%81%E5%B8%AB%E7%9A%84%E5%A5%BD%E9%BB%9E%E5%AD%90-x-MSJ-special-idea/100064580897994/" },
+          { icon: "🖐️", title: "思誼 職能治療師", category: "專業治療與親職專欄", description: "分享兒童精細動作與感覺統合訓練圖文。", url: "https://www.facebook.com/ot.workflow" }
+        ]
+      }
+    };
+
+    const MAIN_TABS = [
+      { id: "home", icon: "🏠", label: "首頁總覽" },
+      { id: "iep", icon: "📅", label: "IEP 會議預約" },
+      { id: "referral", icon: "📋", label: "鑑定提報專區" },
+      { id: "advocacy", icon: "💡", label: "特教宣導資源" },
+      { id: "links", icon: "🔗", label: "特教好站連結" }
+    ];
+
+    const ADVOCACY_SUBTABS = [
+      { id: "overview", icon: "📚", label: "宣導檔案總覽" },
+      { id: "articles", icon: "📰", label: "王意中心理師文章" },
+      { id: "therapists", icon: "🩺", label: "專業治療師介紹" },
+      { id: "assistants", icon: "🤝", label: "特教學生助理員" },
+      { id: "behavior", icon: "🧭", label: "問題行為處理策略" },
+      { id: "pbs", icon: "📂", label: "PBS 介入表件下載" }
+    ];
+
+    let activeTab = "home";
+    let activeAdvocacySubtab = "overview";
+    let activeCriteriaId = "ld";
+    let activePbsFilter = "all";
+    let activeLinksFilter = "all";
+    let fontScaleIdx = 0;
+
+    let openAccordions = {
+      "crit-legal": true,
+      "crit-points": true,
+      "crit-obs": false,
+      "crit-excl": false
+    };
+
+    function showToast(msg, icon = "✨") {
+      const box = document.getElementById("toastBox");
+      const iconEl = document.getElementById("toastIcon");
+      const textEl = document.getElementById("toastText");
+      if (!box || !textEl) return;
+      if (iconEl) iconEl.textContent = icon;
+      textEl.textContent = msg;
+      box.classList.remove("hidden");
+      clearTimeout(window._toastTimer);
+      window._toastTimer = setTimeout(() => box.classList.add("hidden"), 2600);
+    }
+
+    function copyToClipboard(text, label) {
+      if (navigator.clipboard && navigator.clipboard.writeText) {
+        navigator.clipboard.writeText(text).then(() => {
+          showToast(`已複製「${label}」`, "📋");
+        }).catch(() => {
+          showToast(`已準備內容：${label}`, "📋");
+        });
+      } else {
+        showToast(`已準備內容：${label}`, "📋");
+      }
+    }
+
+    function getAllSearchableItems() {
+      const items = [];
+      items.push({ title: SITE_CONFIG.referralZone.mainForm.title, category: "鑑定提報專區 · 線上表單", desc: SITE_CONFIG.referralZone.mainForm.description, url: SITE_CONFIG.referralZone.mainForm.url, tab: "referral" });
+      items.push({ title: SITE_CONFIG.referralZone.manualPdf.title, category: "鑑定提報專區 · 說明手冊", desc: SITE_CONFIG.referralZone.manualPdf.description, url: SITE_CONFIG.referralZone.manualPdf.url, tab: "referral" });
+      SITE_CONFIG.referralZone.cloudFolders.forEach(f => {
+        items.push({ title: f.name, category: `鑑定提報表件 · ${f.categoryBadge}`, desc: f.description, url: f.url, tab: "referral" });
+      });
+      SITE_CONFIG.advocacyResources.featuredCloudDocs.forEach(d => {
+        items.push({ title: d.title, category: `特教宣導資源 · ${d.tag}`, desc: d.description, url: d.url, tab: "advocacy", subtab: "overview" });
+      });
+      SITE_CONFIG.advocacyResources.articles.forEach(a => {
+        items.push({ title: a.title, category: `特教相關文章 · ${a.author}`, desc: a.summary, url: a.url, tab: "advocacy", subtab: "articles" });
+      });
+      SITE_CONFIG.advocacyResources.pbsFolder.files.forEach(f => {
+        items.push({ title: f.name, category: `行為功能介入表件 · ${f.type}`, desc: f.desc, url: f.url, tab: "advocacy", subtab: "pbs" });
+      });
+      SITE_CONFIG.goodLinks.items.forEach(g => {
+        items.push({ title: g.title, category: `特教好站連結 · ${g.category}`, desc: g.description, url: g.url, tab: "links" });
+      });
+      return items;
+    }
+
+    function renderNavigation() {
+      const nav = document.getElementById("mainNavContainer");
+      if (!nav) return;
+      nav.innerHTML = MAIN_TABS.map(t => {
+        const isActive = t.id === activeTab;
+        return `
+          <button
+            type="button"
+            data-tab-id="${t.id}"
+            class="nav-tab-btn shrink-0 flex items-center gap-1.5 px-4 py-2 rounded-2xl font-black text-xs sm:text-sm border-2 transition ${
+              isActive
+                ? "bg-teal-600 text-white border-teal-700 shadow-xs"
+                : "bg-white hover:bg-teal-50 text-slate-700 border-teal-100"
+            }"
+          >
+            <span>${t.icon}</span>
+            <span>${t.label}</span>
+          </button>
+        `;
+      }).join("");
+
+      nav.querySelectorAll(".nav-tab-btn").forEach(btn => {
+        btn.addEventListener("click", () => {
+          activeTab = btn.getAttribute("data-tab-id");
+          renderNavigation();
+          renderMainViewport();
+          window.scrollTo({ top: 0, behavior: "smooth" });
+        });
+      });
+    }
+
+    function renderHomeView() {
+      const info = SITE_CONFIG.siteInfo;
+      const ref = SITE_CONFIG.referralZone;
+      const adv = SITE_CONFIG.advocacyResources;
+
+      return `
+        <!-- Top Notice Strip -->
+        <div class="bg-amber-50 border-2 border-amber-200 rounded-2xl px-4 py-3 flex flex-wrap items-center justify-between gap-2 shadow-2xs">
+          <p class="text-xs sm:text-sm font-bold text-amber-900">
+            ${info.announcement}
+          </p>
+          <a href="${ref.mainForm.url}" target="_blank" rel="noopener noreferrer"
+            class="shrink-0 px-3 py-1 rounded-full bg-amber-500 hover:bg-amber-600 text-white font-bold text-xs transition">
+            填寫提報表單 ↗
+          </a>
+        </div>
+
+        <!-- Hero Banner -->
+        <section class="warm-card bg-gradient-to-br from-teal-50/90 via-white to-emerald-50/70 p-6 sm:p-8">
+          <div class="grid grid-cols-1 lg:grid-cols-12 gap-6 items-center">
+            <div class="lg:col-span-7 space-y-3.5">
+              <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-teal-100/80 text-teal-900 text-xs font-black border border-teal-200">
+                <span>🏫 ${info.schoolName}</span>
+                <span>·</span>
+                <span>特殊教育資源平台</span>
+              </div>
+              <h2 class="text-2xl sm:text-3xl font-black text-teal-950 tracking-tight leading-snug">
+                ${info.portalTitle}
+              </h2>
+              <p class="text-slate-600 scalable-text">
+                ${info.heroSubtitle}。
+              </p>
+              <div class="flex flex-wrap items-center gap-3 pt-1">
+                <button type="button" data-goto-tab="iep" class="hero-jump-btn flex items-center gap-2 px-5 py-3 rounded-2xl bg-teal-600 hover:bg-teal-700 text-white font-black text-sm shadow-sm transition">
+                  <span>📅</span>
+                  <span>立即預約 IEP 會議</span>
+                </button>
+                <button type="button" data-goto-tab="referral" class="hero-jump-btn flex items-center gap-2 px-5 py-3 rounded-2xl bg-white hover:bg-teal-50 text-teal-900 border-2 border-teal-200 font-black text-sm transition">
+                  <span>📋</span>
+                  <span>鑑定提報與基準辦法</span>
+                </button>
+              </div>
+            </div>
+
+            <!-- Shortcut Grid -->
+            <div class="lg:col-span-5 grid grid-cols-2 gap-3">
+              <button type="button" data-goto-tab="iep" class="hero-jump-btn text-left p-4 rounded-2xl bg-white hover:bg-teal-50/60 border-2 border-teal-200 transition shadow-2xs">
+                <div class="text-2xl mb-1">📅</div>
+                <div class="font-black text-teal-950 text-sm">新豐國小IEP會議預約</div>
+                <div class="text-xs text-teal-700 font-bold mt-1">
+                  線上登記與時段選擇 →
+                </div>
+              </button>
+
+              <button type="button" data-goto-tab="referral" class="hero-jump-btn text-left p-4 rounded-2xl bg-white hover:bg-amber-50/60 border-2 border-amber-200 transition shadow-2xs">
+                <div class="text-2xl mb-1">📋</div>
+                <div class="font-black text-slate-900 text-sm">鑑定安置提報專區</div>
+                <div class="text-xs text-amber-800 font-bold mt-1">
+                  線上調查與 4 大障別基準 →
+                </div>
+              </button>
+
+              <button type="button" data-goto-tab="advocacy" data-goto-subtab="pbs" class="hero-jump-btn text-left p-4 rounded-2xl bg-white hover:bg-emerald-50/60 border-2 border-emerald-200 transition shadow-2xs">
+                <div class="text-2xl mb-1">📂</div>
+                <div class="font-black text-slate-900 text-sm">PBS 行為介入表件</div>
+                <div class="text-xs text-emerald-800 font-bold mt-1">
+                  ABCR 紀錄表與 8 份表件 →
+                </div>
+              </button>
+
+              <button type="button" data-goto-tab="advocacy" data-goto-subtab="therapists" class="hero-jump-btn text-left p-4 rounded-2xl bg-white hover:bg-purple-50/60 border-2 border-purple-200 transition shadow-2xs">
+                <div class="text-2xl mb-1">🩺</div>
+                <div class="font-black text-slate-900 text-sm">專業團隊與助理員</div>
+                <div class="text-xs text-purple-800 font-bold mt-1">
+                  4 類治療師與支持服務 →
+                </div>
+              </button>
+            </div>
+          </div>
+        </section>
+
+        <!-- Two Main Highlight Cards -->
+        <section class="grid grid-cols-1 md:grid-cols-2 gap-5">
+          <div class="warm-card warm-card-hover p-6 flex flex-col justify-between gap-4">
+            <div class="space-y-2.5">
+              <div class="flex items-center justify-between">
+                <span class="text-xs font-black px-3 py-1 rounded-full bg-teal-100 text-teal-900">
+                  📌 內建預約系統
+                </span>
+                <span class="text-xs font-bold text-slate-500">直接對接 Google 試算表</span>
+              </div>
+              <h3 class="text-lg sm:text-xl font-black text-teal-950">
+                新豐國小IEP會議預約
+              </h3>
+              <p class="text-xs sm:text-sm text-slate-600 leading-relaxed">
+                點選日期與時段即可完成登記。
+              </p>
+            </div>
+            <div class="pt-3 border-t border-teal-100 flex items-center justify-between">
+              <span class="text-xs font-bold text-teal-700">雲端即時連動</span>
+              <button type="button" data-goto-tab="iep" class="hero-jump-btn px-4 py-2 rounded-xl bg-teal-600 hover:bg-teal-700 text-white font-bold text-xs sm:text-sm transition">
+                前往預約會議 →
+              </button>
+            </div>
+          </div>
+
+          <div class="warm-card warm-card-hover p-6 flex flex-col justify-between gap-4 border-amber-200">
+            <div class="space-y-2.5">
+              <div class="flex items-center justify-between">
+                <span class="text-xs font-black px-3 py-1 rounded-full bg-amber-100 text-amber-900">
+                  📋 校內鑑定安置提報
+                </span>
+                <span class="text-xs font-bold text-slate-500">含說明手冊 PDF 與雲端表件</span>
+              </div>
+              <h3 class="text-lg sm:text-xl font-black text-slate-900">
+                新個案提報調查與各障別鑑定基準
+              </h3>
+              <p class="text-xs sm:text-sm text-slate-600 leading-relaxed">
+                提供導師填寫線上提報表單、下載雲端表件資料夾。
+              </p>
+            </div>
+            <div class="pt-3 border-t border-amber-100 flex items-center justify-between gap-2">
+              <a href="${ref.mainForm.url}" target="_blank" rel="noopener noreferrer" class="text-xs sm:text-sm font-bold text-amber-800 hover:text-amber-950 underline">
+                開啟 Google 提報表單 ↗
+              </a>
+              <button type="button" data-goto-tab="referral" class="hero-jump-btn px-4 py-2 rounded-xl bg-amber-500 hover:bg-amber-600 text-white font-bold text-xs sm:text-sm transition">
+                查看辦法與資料夾 →
+              </button>
+            </div>
+          </div>
+        </section>
+
+        <!-- Featured Advocacy Docs -->
+        <section class="warm-card p-6 space-y-4">
+          <div class="flex flex-wrap items-center justify-between gap-2 border-b border-teal-100 pb-3">
+            <div class="flex items-center gap-2">
+              <span class="text-xl">💡</span>
+              <h3 class="font-black text-slate-900 text-base sm:text-lg">特教宣導精選教材與支持資源</h3>
+            </div>
+            <button type="button" data-goto-tab="advocacy" class="hero-jump-btn text-xs sm:text-sm font-bold text-teal-700 hover:text-teal-900">
+              查看全部宣導與 PBS 表件 →
+            </button>
+          </div>
+
+          <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+            ${adv.featuredCloudDocs.map(doc => `
+              <a href="${doc.url}" target="_blank" rel="noopener noreferrer"
+                class="p-4 rounded-2xl bg-teal-50/50 hover:bg-teal-50 border border-teal-200 transition flex flex-col justify-between gap-3 group">
+                <div class="space-y-1.5">
+                  <div class="flex items-center justify-between">
+                    <span class="text-xs font-bold px-2.5 py-0.5 rounded-full bg-white text-teal-800 border border-teal-200">${doc.tag}</span>
+                    <span class="text-xl">${doc.icon}</span>
+                  </div>
+                  <h4 class="font-bold text-slate-900 text-sm sm:text-base group-hover:text-teal-700 transition leading-snug">
+                    ${doc.title}
+                  </h4>
+                  <p class="text-xs text-slate-600 leading-relaxed">${doc.description}</p>
+                </div>
+                <div class="text-xs font-bold text-teal-700 flex items-center justify-between pt-2 border-t border-teal-100">
+                  <span>Google 雲端硬碟</span>
+                  <span>開啟閱覽 ↗</span>
+                </div>
+              </a>
+            `).join("")}
+          </div>
+        </section>
+      `;
+    }
+
+    function renderIepView() {
+      return `
+        <div class="warm-card p-6 space-y-4">
+          <div class="flex flex-wrap items-center justify-between gap-3 border-b border-teal-100 pb-4">
+            <div class="flex items-center gap-3">
+              <span class="w-12 h-12 rounded-2xl bg-teal-100 border border-teal-300 flex items-center justify-center text-2xl">📅</span>
+              <div>
+                <h2 class="text-xl sm:text-2xl font-black text-teal-950">新豐國小IEP會議預約</h2>
+                <p class="text-xs sm:text-sm text-slate-500">直接內嵌您的 Google Apps Script 預約系統，資料即時同步至雲端試算表</p>
+              </div>
+            </div>
+            <a href="${GAS_WEB_APP_URL}" target="_blank" rel="noopener noreferrer"
+              class="px-4 py-2.5 rounded-2xl bg-teal-50 hover:bg-teal-100 text-teal-900 border-2 border-teal-200 font-bold text-xs sm:text-sm transition flex items-center gap-1.5">
+              <span>在新視窗中開啟預約系統 ↗</span>
+            </a>
+          </div>
+
+          <!-- Embedded Google Apps Script Iframe -->
+          <div class="w-full rounded-2xl overflow-hidden border-2 border-teal-200 bg-white shadow-inner" style="height: 750px;">
+            <iframe src="${GAS_WEB_APP_URL}" class="w-full h-full border-0" title="新豐國小IEP會議預約系統"></iframe>
+          </div>
+        </div>
+      `;
+    }
+
+    function renderReferralView() {
+      const ref = SITE_CONFIG.referralZone;
+      const currentCrit = ref.criteriaCategories.find(c => c.id === activeCriteriaId) || ref.criteriaCategories[0];
+
+      return `
+        <section class="warm-card p-6 space-y-5">
+          <div class="flex flex-wrap items-center justify-between gap-4 border-b border-teal-100 pb-4">
+            <div class="flex items-center gap-3">
+              <span class="w-12 h-12 rounded-2xl bg-amber-100 border border-amber-300 flex items-center justify-center text-2xl">📋</span>
+              <div>
+                <h2 class="text-xl sm:text-2xl font-black text-slate-900">鑑定提報專區 · 線上調查與各障別表件</h2>
+                <p class="text-xs sm:text-sm text-slate-500">整合校內新個案線上提報調查、鑑定辦法說明手冊及四大障礙類別雲端資料夾</p>
+              </div>
+            </div>
+            <a href="${ref.manualPdf.url}" target="_blank" rel="noopener noreferrer"
+              class="px-4 py-2.5 rounded-2xl bg-teal-50 hover:bg-teal-100 text-teal-900 border-2 border-teal-200 font-bold text-xs sm:text-sm transition flex items-center gap-1.5">
+              <span>📕 開啟《${ref.manualPdf.title}》</span>
+              <span>↗</span>
+            </a>
+          </div>
+
+          <div class="bg-gradient-to-r from-amber-50 via-orange-50/70 to-amber-50 border-2 border-amber-300 rounded-2xl p-5 flex flex-col md:flex-row items-start md:items-center justify-between gap-4">
+            <div class="space-y-1">
+              <span class="inline-block text-xs font-black px-2.5 py-0.5 rounded-full bg-amber-200 text-amber-950">
+                🔔 ${ref.mainForm.badge}
+              </span>
+              <h3 class="text-lg font-black text-slate-900 pt-0.5">${ref.mainForm.title}</h3>
+              <p class="text-xs sm:text-sm text-slate-700 leading-relaxed max-w-2xl">${ref.mainForm.description}</p>
+            </div>
+            <div class="flex items-center gap-2 shrink-0 w-full md:w-auto">
+              <a href="${ref.mainForm.url}" target="_blank" rel="noopener noreferrer"
+                class="flex-1 md:flex-initial text-center px-5 py-3 rounded-2xl bg-amber-500 hover:bg-amber-600 text-white font-black text-xs sm:text-sm shadow-xs transition">
+                前往填寫提報表單 ↗
+              </a>
+              <button type="button" data-copy-url="${ref.mainForm.url}" data-copy-label="${ref.mainForm.title}"
+                class="btn-copy-link px-3.5 py-3 rounded-2xl bg-white hover:bg-amber-100 text-amber-900 border border-amber-300 text-xs font-bold transition">
+                複製連結
+              </button>
+            </div>
+          </div>
+
+          <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3.5">
+            ${ref.cloudFolders.map(folder => `
+              <div class="p-4 rounded-2xl bg-teal-50/50 border-2 border-teal-100 hover:border-teal-300 transition flex flex-col justify-between gap-3">
+                <div>
+                  <div class="flex items-center justify-between">
+                    <span class="text-xs font-bold px-2.5 py-0.5 rounded-full bg-white text-teal-800 border border-teal-200">${folder.categoryBadge}</span>
+                    <span class="text-xl">${folder.icon}</span>
+                  </div>
+                  <h4 class="font-black text-slate-900 text-sm sm:text-base mt-2">${folder.name}</h4>
+                  <p class="text-xs text-slate-600 mt-1 leading-relaxed">${folder.description}</p>
+                </div>
+                <div class="flex items-center gap-1.5 pt-2 border-t border-teal-100">
+                  <a href="${folder.url}" target="_blank" rel="noopener noreferrer"
+                    class="flex-1 text-center py-2 px-3 rounded-xl bg-teal-600 hover:bg-teal-700 text-white font-bold text-xs transition">
+                    開啟雲端資料夾 ↗
+                  </a>
+                  <button type="button" data-copy-url="${folder.url}" data-copy-label="${folder.name}"
+                    class="btn-copy-link py-2 px-2.5 rounded-xl bg-white hover:bg-teal-50 text-teal-800 border border-teal-200 text-xs font-bold">
+                    複製
+                  </button>
+                </div>
+              </div>
+            `).join("")}
+          </div>
+        </section>
+
+        <section class="warm-card p-6 space-y-5">
+          <div class="flex flex-wrap items-center justify-between gap-3 border-b border-teal-100 pb-4">
+            <div>
+              <h3 class="text-base sm:text-lg font-black text-teal-950">
+                🔍 各障礙類別：辦法・鑑定基準・課堂觀察重點・排他因素
+              </h3>
+              <p class="text-xs text-slate-500 mt-0.5">
+                點選上方障別按鈕可切換類別；點選各標題列可展開或收合詳細條文！
+              </p>
+            </div>
+            <div class="flex items-center gap-2">
+              <button type="button" id="btnExpandAllCrit" class="px-3 py-1.5 rounded-xl text-xs font-bold bg-teal-50 hover:bg-teal-100 text-teal-800 border border-teal-200 transition">
+                全部展開 ▼
+              </button>
+              <button type="button" id="btnCollapseAllCrit" class="px-3 py-1.5 rounded-xl text-xs font-bold bg-slate-100 hover:bg-slate-200 text-slate-700 transition">
+                全部收合 ▲
+              </button>
+            </div>
+          </div>
+
+          <div class="flex flex-wrap items-center justify-between gap-3">
+            <div class="flex flex-wrap gap-2">
+              ${ref.criteriaCategories.map(cat => {
+                const isSelected = cat.id === activeCriteriaId;
+                return `
+                  <button type="button" data-crit-id="${cat.id}"
+                    class="crit-tab-btn flex items-center gap-1.5 px-4 py-2.5 rounded-2xl font-black text-xs sm:text-sm border-2 transition ${
+                      isSelected
+                        ? "bg-teal-600 text-white border-teal-700 shadow-xs"
+                        : "bg-white hover:bg-teal-50 text-slate-700 border-teal-100"
+                    }">
+                    <span>${cat.icon}</span>
+                    <span>${cat.shortName}</span>
+                  </button>
+                `;
+              }).join("")}
+            </div>
+
+            <a href="${currentCrit.folderUrl}" target="_blank" rel="noopener noreferrer"
+              class="text-xs sm:text-sm font-bold text-teal-700 hover:text-teal-900 underline">
+              📂 下載「${currentCrit.shortName}」提報表件 ↗
+            </a>
+          </div>
+
+          <div class="bg-teal-50/70 rounded-2xl p-4 border border-teal-200 flex flex-wrap items-center justify-between gap-2">
+            <div class="flex items-center gap-2.5">
+              <span class="text-2xl">${currentCrit.icon}</span>
+              <div>
+                <span class="text-xs font-bold text-teal-700">${currentCrit.legalArticle}</span>
+                <h4 class="text-base sm:text-lg font-black text-teal-950">${currentCrit.title}</h4>
+              </div>
+            </div>
+            <span class="text-xs text-teal-700 font-medium">點擊下方卡片標題可展開／收合</span>
+          </div>
+
+          <div class="space-y-3">
+            <div class="border-2 border-teal-100 rounded-2xl overflow-hidden bg-white">
+              <button type="button" data-acc-key="crit-legal" class="acc-toggle-btn w-full px-5 py-3.5 text-left bg-teal-50/40 hover:bg-teal-50 flex items-center justify-between gap-3 transition">
+                <span class="font-black text-teal-950 text-sm sm:text-base">📘 壹、鑑定辦法定義</span>
+                <span class="text-xs font-bold text-teal-700 bg-white px-2.5 py-1 rounded-full border border-teal-200">
+                  ${openAccordions["crit-legal"] ? "收合 ▲" : "展開 ▼"}
+                </span>
+              </button>
+              <div class="${openAccordions["crit-legal"] ? "block" : "hidden"} px-5 py-4 border-t border-teal-100">
+                <p class="text-slate-700 scalable-text leading-relaxed">${currentCrit.legalDefinition}</p>
+              </div>
+            </div>
+
+            <div class="border-2 border-teal-100 rounded-2xl overflow-hidden bg-white">
+              <button type="button" data-acc-key="crit-points" class="acc-toggle-btn w-full px-5 py-3.5 text-left bg-teal-50/40 hover:bg-teal-50 flex items-center justify-between gap-3 transition">
+                <span class="font-black text-teal-950 text-sm sm:text-base">⚖️ 貳、鑑定基準與主要表現類型（共 ${currentCrit.criteriaPoints.length} 款基準）</span>
+                <span class="text-xs font-bold text-teal-700 bg-white px-2.5 py-1 rounded-full border border-teal-200">
+                  ${openAccordions["crit-points"] ? "收合 ▲" : "展開 ▼"}
+                </span>
+              </button>
+              <div class="${openAccordions["crit-points"] ? "block" : "hidden"} px-5 py-4 border-t border-teal-100 space-y-4">
+                <p class="text-xs sm:text-sm text-slate-600 font-bold">${currentCrit.criteriaIntro}</p>
+                <ul class="space-y-2 text-slate-800 scalable-text">
+                  ${currentCrit.criteriaPoints.map(pt => `
+                    <li class="p-3 rounded-xl bg-teal-50/50 border border-teal-100 leading-relaxed">${pt}</li>
+                  `).join("")}
+                </ul>
+                <div class="grid grid-cols-1 sm:grid-cols-2 gap-3 pt-1">
+                  ${currentCrit.subtypes.map(sub => `
+                    <div class="p-3.5 rounded-xl bg-amber-50/60 border border-amber-200">
+                      <div class="font-black text-amber-950 text-xs sm:text-sm">${sub.name}</div>
+                      <div class="text-xs text-slate-700 mt-1 leading-relaxed">${sub.desc}</div>
+                    </div>
+                  `).join("")}
+                </div>
+              </div>
+            </div>
+
+            <div class="border-2 border-teal-100 rounded-2xl overflow-hidden bg-white">
+              <button type="button" data-acc-key="crit-obs" class="acc-toggle-btn w-full px-5 py-3.5 text-left bg-teal-50/40 hover:bg-teal-50 flex items-center justify-between gap-3 transition">
+                <span class="font-black text-teal-950 text-sm sm:text-base">👀 參、導師課堂觀察重點（共 ${currentCrit.observationGroups.length} 大觀察面向）</span>
+                <span class="text-xs font-bold text-teal-700 bg-white px-2.5 py-1 rounded-full border border-teal-200">
+                  ${openAccordions["crit-obs"] ? "收合 ▲" : "展開詳情 ▼"}
+                </span>
+              </button>
+              <div class="${openAccordions["crit-obs"] ? "block" : "hidden"} px-5 py-4 border-t border-teal-100">
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-3.5">
+                  ${currentCrit.observationGroups.map(grp => `
+                    <div class="bg-slate-50 rounded-xl border border-slate-200 p-4 space-y-2">
+                      <h5 class="font-black text-teal-900 text-xs sm:text-sm border-b border-slate-200 pb-1.5">${grp.groupTitle}</h5>
+                      <ul class="space-y-1.5 text-xs sm:text-sm text-slate-700">
+                        ${grp.items.map(item => `<li class="leading-relaxed">• ${item}</li>`).join("")}
+                      </ul>
+                    </div>
+                  `).join("")}
+                </div>
+              </div>
+            </div>
+
+            <div class="border-2 border-teal-100 rounded-2xl overflow-hidden bg-white">
+              <button type="button" data-acc-key="crit-excl" class="acc-toggle-btn w-full px-5 py-3.5 text-left bg-teal-50/40 hover:bg-teal-50 flex items-center justify-between gap-3 transition">
+                <span class="font-black text-teal-950 text-sm sm:text-base">📌 肆、排他因素與轉介前介入（RTI）應備事項</span>
+                <span class="text-xs font-bold text-teal-700 bg-white px-2.5 py-1 rounded-full border border-teal-200">
+                  ${openAccordions["crit-excl"] ? "收合 ▲" : "展開詳情 ▼"}
+                </span>
+              </button>
+              <div class="${openAccordions["crit-excl"] ? "block" : "hidden"} px-5 py-4 border-t border-teal-100">
+                <div class="grid grid-cols-1 lg:grid-cols-2 gap-4">
+                  <div class="bg-rose-50/60 border border-rose-200 rounded-xl p-4 space-y-2">
+                    <div class="text-xs font-black text-rose-900">🚫 排他因素（須排除下列直接原因）</div>
+                    <ul class="space-y-1.5 text-xs sm:text-sm text-slate-700">
+                      ${currentCrit.exclusionFactors.map(ex => `<li class="leading-relaxed">• ${ex}</li>`).join("")}
+                    </ul>
+                  </div>
+                  <div class="bg-emerald-50/60 border border-emerald-200 rounded-xl p-4 space-y-2">
+                    <div class="text-xs font-black text-emerald-900">✅ 轉介前介入與提報應備佐證</div>
+                    <ul class="space-y-1.5 text-xs sm:text-sm text-slate-700">
+                      ${currentCrit.referralRequirements.map(req => `<li class="leading-relaxed">• ${req}</li>`).join("")}
+                    </ul>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+      `;
+    }
+
+    function renderAdvocacySubcontent() {
+      const adv = SITE_CONFIG.advocacyResources;
+
+      if (activeAdvocacySubtab === "overview") {
+        return `
+          <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+            ${adv.featuredCloudDocs.map(doc => `
+              <div class="p-5 rounded-2xl bg-teal-50/50 border-2 border-teal-100 flex flex-col justify-between gap-4">
+                <div class="space-y-2">
+                  <div class="flex items-center justify-between">
+                    <span class="text-xs font-bold px-2.5 py-0.5 rounded-full bg-white border border-teal-200 text-teal-800">${doc.tag}</span>
+                    <span class="text-2xl">${doc.icon}</span>
+                  </div>
+                  <h4 class="font-black text-slate-900 text-base leading-snug">${doc.title}</h4>
+                  <p class="text-xs sm:text-sm text-slate-600 leading-relaxed">${doc.description}</p>
+                </div>
+                <div class="flex items-center gap-2 pt-3 border-t border-teal-100">
+                  <a href="${doc.url}" target="_blank" rel="noopener noreferrer"
+                    class="flex-1 text-center py-2.5 px-3 rounded-xl bg-teal-600 hover:bg-teal-700 text-white font-bold text-xs transition">
+                    開啟雲端檔案 ↗
+                  </a>
+                  <button type="button" data-copy-url="${doc.url}" data-copy-label="${doc.title}"
+                    class="btn-copy-link py-2.5 px-3 rounded-xl bg-white hover:bg-teal-50 border border-teal-200 text-teal-800 text-xs font-bold">
+                    複製
+                  </button>
+                </div>
+              </div>
+            `).join("")}
+          </div>
+        `;
+      }
+
+      if (activeAdvocacySubtab === "articles") {
+        return `
+          <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+            ${adv.articles.map(art => `
+              <div class="p-5 rounded-2xl bg-amber-50/50 border-2 border-amber-200 flex flex-col justify-between gap-4">
+                <div class="space-y-2">
+                  <div class="flex items-center justify-between">
+                    <span class="text-xs font-bold text-amber-900 bg-white px-2.5 py-0.5 rounded-full border border-amber-200">
+                      ${art.category} · ${art.author}
+                    </span>
+                    <span class="text-2xl">${art.icon}</span>
+                  </div>
+                  <h5 class="font-black text-slate-900 text-base leading-snug">${art.title}</h5>
+                  <p class="text-xs sm:text-sm text-slate-600 leading-relaxed">${art.summary}</p>
+                </div>
+                <a href="${art.url}" target="_blank" rel="noopener noreferrer"
+                  class="w-full text-center py-2.5 px-4 rounded-xl bg-amber-500 hover:bg-amber-600 text-white font-bold text-xs sm:text-sm transition">
+                  閱讀王意中心理師文章 ↗
+                </a>
+              </div>
+            `).join("")}
+          </div>
+        `;
+      }
+
+      if (activeAdvocacySubtab === "therapists") {
+        return `
+          <div class="space-y-4">
+            <div class="bg-teal-50/70 border border-teal-200 rounded-2xl p-4">
+              <div class="text-xs font-black text-teal-800 mb-1">📜 專業團隊法規依據</div>
+              <p class="text-xs sm:text-sm text-slate-700 leading-relaxed">${adv.therapistsLegalBasis}</p>
+            </div>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+              ${adv.therapists.map(th => `
+                <div class="p-5 rounded-2xl bg-white border-2 border-teal-100 space-y-3">
+                  <div class="flex items-center gap-3">
+                    <span class="w-11 h-11 rounded-2xl bg-teal-100 text-2xl flex items-center justify-center shrink-0">${th.icon}</span>
+                    <div>
+                      <h4 class="font-black text-teal-950 text-base">${th.role}</h4>
+                      <p class="text-xs text-slate-500 mt-0.5">${th.targetStudents}</p>
+                    </div>
+                  </div>
+                  <ul class="space-y-1.5 text-xs sm:text-sm text-slate-700 bg-teal-50/40 p-3.5 rounded-xl border border-teal-100">
+                    ${th.services.map(s => `<li class="leading-relaxed">• ${s}</li>`).join("")}
+                  </ul>
+                </div>
+              `).join("")}
+            </div>
+          </div>
+        `;
+      }
+
+      if (activeAdvocacySubtab === "assistants") {
+        return `
+          <div class="space-y-4">
+            <div class="bg-teal-50/70 border border-teal-200 rounded-2xl p-4">
+              <p class="text-xs sm:text-sm text-teal-950 font-bold leading-relaxed">${adv.assistants.intro}</p>
+            </div>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+              ${adv.assistants.duties.map(d => `
+                <div class="p-5 rounded-2xl bg-white border-2 border-teal-100 space-y-2.5">
+                  <div class="flex items-center gap-2">
+                    <span class="text-xl">${d.icon}</span>
+                    <h4 class="font-black text-teal-950 text-sm sm:text-base">${d.title}</h4>
+                  </div>
+                  <ul class="space-y-1.5 text-xs sm:text-sm text-slate-700 bg-slate-50 p-3.5 rounded-xl">
+                    ${d.items.map(it => `<li class="leading-relaxed">• ${it}</li>`).join("")}
+                  </ul>
+                </div>
+              `).join("")}
+            </div>
+          </div>
+        `;
+      }
+
+      if (activeAdvocacySubtab === "behavior") {
+        const bs = adv.behaviorStrategies;
+        return `
+          <div class="space-y-6">
+            <div class="space-y-3">
+              <div class="flex flex-wrap items-center justify-between gap-2">
+                <h4 class="font-black text-teal-950 text-sm sm:text-base">🔍 行為問題環境因素與功能分析（ABC 模式）</h4>
+                <span class="text-xs text-slate-500">${bs.abcSource}</span>
+              </div>
+              <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+                ${bs.abcAnalysis.map(item => `
+                  <div class="bg-teal-50/50 rounded-2xl border-2 border-teal-100 p-4 space-y-2">
+                    <span class="text-xs font-bold px-2.5 py-0.5 rounded-full bg-white border border-teal-200 text-teal-800">${item.badge}</span>
+                    <h5 class="font-black text-slate-900 text-sm sm:text-base pt-1">${item.stage}</h5>
+                    <ul class="space-y-1.5 text-xs sm:text-sm text-slate-700 leading-relaxed">
+                      ${item.points.map(p => `<li>• ${p}</li>`).join("")}
+                    </ul>
+                  </div>
+                `).join("")}
+              </div>
+            </div>
+
+            <div class="space-y-3 pt-4 border-t border-teal-100">
+              <div class="flex flex-wrap items-center justify-between gap-2">
+                <h4 class="font-black text-teal-950 text-sm sm:text-base">🛡️ 學生爆發性行為三階段危機處理流程</h4>
+                <span class="text-xs text-slate-500">${bs.crisisSource}</span>
+              </div>
+              <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+                ${bs.crisisPhases.map(cp => `
+                  <div class="bg-amber-50/50 rounded-2xl border-2 border-amber-200 p-4 space-y-2">
+                    <div class="font-black text-amber-950 text-sm sm:text-base">${cp.phase}</div>
+                    <div class="text-xs font-bold text-amber-800 bg-white px-2.5 py-1 rounded-lg border border-amber-200">
+                      目標：${cp.goal}
+                    </div>
+                    <ul class="space-y-1.5 text-xs sm:text-sm text-slate-700 pt-1">
+                      ${cp.steps.map(st => `<li class="leading-relaxed">▸ ${st}</li>`).join("")}
+                    </ul>
+                  </div>
+                `).join("")}
+              </div>
+            </div>
+          </div>
+        `;
+      }
+
+      if (activeAdvocacySubtab === "pbs") {
+        const pbs = adv.pbsFolder;
+        const filteredFiles = activePbsFilter === "all"
+          ? pbs.files
+          : pbs.files.filter(f => activePbsFilter === "word" ? f.type.includes("Word") : f.type.includes("PDF"));
+
+        return `
+          <div class="space-y-4">
+            <div class="bg-gradient-to-r from-teal-600 to-emerald-600 text-white rounded-2xl p-5 flex flex-col md:flex-row items-start md:items-center justify-between gap-4">
+              <div class="space-y-1">
+                <span class="text-xs font-bold text-teal-100">📂 Positive Behavior Support (PBS)</span>
+                <h4 class="text-base sm:text-lg font-black">${pbs.title}</h4>
+                <p class="text-xs sm:text-sm text-teal-50">${pbs.description}</p>
+              </div>
+              <div class="flex items-center gap-2 shrink-0">
+                <a href="${pbs.folderUrl}" target="_blank" rel="noopener noreferrer"
+                  class="px-4 py-2.5 rounded-xl bg-amber-400 hover:bg-amber-300 text-slate-950 font-black text-xs sm:text-sm transition">
+                  開啟雲端總資料夾 ↗
+                </a>
+                <button type="button" data-copy-url="${pbs.folderUrl}" data-copy-label="${pbs.title}"
+                  class="btn-copy-link px-3 py-2.5 rounded-xl bg-white/15 hover:bg-white/25 text-white text-xs font-bold">
+                  複製
+                </button>
+              </div>
+            </div>
+
+            <div class="flex flex-wrap gap-2">
+              <button type="button" data-pbs-filter="all"
+                class="pbs-filter-btn px-3.5 py-1.5 rounded-xl text-xs font-bold border transition ${
+                  activePbsFilter === "all" ? "bg-teal-600 text-white border-teal-700" : "bg-white text-slate-600 border-teal-200"
+                }">
+                全部表件 (${pbs.files.length})
+              </button>
+              <button type="button" data-pbs-filter="word"
+                class="pbs-filter-btn px-3.5 py-1.5 rounded-xl text-xs font-bold border transition ${
+                  activePbsFilter === "word" ? "bg-teal-600 text-white border-teal-700" : "bg-white text-slate-600 border-teal-200"
+                }">
+                📝 Word 空白紀錄表與量表
+              </button>
+              <button type="button" data-pbs-filter="pdf"
+                class="pbs-filter-btn px-3.5 py-1.5 rounded-xl text-xs font-bold border transition ${
+                  activePbsFilter === "pdf" ? "bg-teal-600 text-white border-teal-700" : "bg-white text-slate-600 border-teal-200"
+                }">
+                📕 PDF 填寫範例與策略指南
+              </button>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-3.5">
+              ${filteredFiles.map(file => `
+                <div class="p-4 rounded-2xl bg-teal-50/40 border-2 border-teal-100 hover:border-teal-300 flex items-center justify-between gap-3 transition">
+                  <div class="space-y-1 min-w-0">
+                    <div class="flex items-center gap-2">
+                      <span class="text-[11px] font-bold px-2 py-0.5 rounded-md bg-white border border-teal-200 text-teal-800">${file.type}</span>
+                      <h5 class="font-black text-slate-900 text-xs sm:text-sm truncate">${file.name}</h5>
+                    </div>
+                    <p class="text-xs text-slate-600 leading-relaxed">${file.desc}</p>
+                  </div>
+                  <a href="${file.url}" target="_blank" rel="noopener noreferrer"
+                    class="shrink-0 px-3.5 py-2 rounded-xl bg-teal-600 hover:bg-teal-700 text-white font-bold text-xs transition">
+                    開啟 ↗
+                  </a>
+                </div>
+              `).join("")}
+            </div>
+          </div>
+        `;
+      }
+      return "";
+    }
+
+    function renderAdvocacyView() {
+      return `
+        <section class="warm-card p-6 space-y-5">
+          <div class="border-b border-teal-100 pb-4 flex flex-wrap items-center justify-between gap-2">
+            <div class="flex items-center gap-3">
+              <span class="w-11 h-11 rounded-2xl bg-teal-100 border border-teal-200 flex items-center justify-center text-2xl">💡</span>
+              <div>
+                <h2 class="text-xl sm:text-2xl font-black text-teal-950">特教宣導資源 · 專業團隊與正向行為支持</h2>
+                <p class="text-xs sm:text-sm text-slate-500">點選下方主題按鈕即可切換檢視</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="flex flex-wrap gap-2 border-b border-teal-100 pb-4">
+            ${ADVOCACY_SUBTABS.map(sub => {
+              const isAct = sub.id === activeAdvocacySubtab;
+              return `
+                <button type="button" data-adv-subtab="${sub.id}"
+                  class="adv-subtab-btn flex items-center gap-1.5 px-3.5 py-2 rounded-2xl font-bold text-xs sm:text-sm border-2 transition ${
+                    isAct
+                      ? "bg-teal-600 text-white border-teal-700 shadow-2xs"
+                      : "bg-teal-50/50 hover:bg-teal-100/70 text-teal-900 border-teal-100"
+                  }">
+                  <span>${sub.icon}</span>
+                  <span>${sub.label}</span>
+                </button>
+              `;
+            }).join("")}
+          </div>
+
+          <div>
+            ${renderAdvocacySubcontent()}
+          </div>
+        </section>
+      `;
+    }
+
+    function renderLinksView() {
+      const links = SITE_CONFIG.goodLinks.items;
+      const filtered = activeLinksFilter === "all"
+        ? links
+        : links.filter(l => l.category === activeLinksFilter);
+
+      return `
+        <section class="warm-card p-6 space-y-5">
+          <div class="flex flex-wrap items-center justify-between gap-3 border-b border-teal-100 pb-4">
+            <div class="flex items-center gap-3">
+              <span class="w-11 h-11 rounded-2xl bg-teal-100 border border-teal-200 flex items-center justify-center text-2xl">🔗</span>
+              <div>
+                <h2 class="text-xl sm:text-2xl font-black text-teal-950">特教相關好站連結</h2>
+                <p class="text-xs sm:text-sm text-slate-500">官方特教行政資源、多媒體教材社群與職能治療專欄</p>
+              </div>
+            </div>
+
+            <div class="flex flex-wrap gap-1.5">
+              ${["all", "官方行政與鑑定資源", "教材與社群交流", "專業治療與親職專欄"].map(cat => `
+                <button type="button" data-links-filter="${cat}"
+                  class="links-filter-btn px-3 py-1.5 rounded-xl text-xs font-bold border transition ${
+                    activeLinksFilter === cat ? "bg-teal-600 text-white border-teal-700" : "bg-white text-slate-600 border-teal-200"
+                  }">
+                  ${cat === "all" ? `全部 (${links.length})` : cat}
+                </button>
+              `).join("")}
+            </div>
+          </div>
+
+          <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+            ${filtered.map(item => `
+              <div class="p-5 rounded-2xl bg-teal-50/40 border-2 border-teal-100 hover:border-teal-300 transition flex flex-col justify-between gap-4">
+                <div class="space-y-2">
+                  <div class="flex items-center justify-between">
+                    <span class="text-xs font-bold px-2.5 py-0.5 rounded-full bg-white border border-teal-200 text-teal-800">${item.category}</span>
+                    <span class="text-2xl">${item.icon}</span>
+                  </div>
+                  <h3 class="font-black text-slate-900 text-base">${item.title}</h3>
+                  <p class="text-xs sm:text-sm text-slate-600 leading-relaxed">${item.description}</p>
+                </div>
+                <div class="flex items-center gap-2 pt-3 border-t border-teal-100">
+                  <a href="${item.url}" target="_blank" rel="noopener noreferrer"
+                    class="flex-1 text-center py-2 px-4 rounded-xl bg-teal-600 hover:bg-teal-700 text-white font-bold text-xs transition">
+                    前往網站 ↗
+                  </a>
+                  <button type="button" data-copy-url="${item.url}" data-copy-label="${item.title}"
+                    class="btn-copy-link py-2 px-3 rounded-xl bg-white hover:bg-teal-50 border border-teal-200 text-teal-800 text-xs font-bold">
+                    複製
+                  </button>
+                </div>
+              </div>
+            `).join("")}
+          </div>
+        </section>
+      `;
+    }
+
+    function bindViewportEvents() {
+      const vp = document.getElementById("mainViewport");
+      if (!vp) return;
+
+      vp.querySelectorAll(".hero-jump-btn").forEach(btn => {
+        btn.addEventListener("click", () => {
+          const targetTab = btn.getAttribute("data-goto-tab");
+          const targetSub = btn.getAttribute("data-goto-subtab");
+          if (targetTab) activeTab = targetTab;
+          if (targetSub) activeAdvocacySubtab = targetSub;
+          renderNavigation();
+          renderMainViewport();
+          window.scrollTo({ top: 0, behavior: "smooth" });
+        });
+      });
+
+      vp.querySelectorAll(".btn-copy-link").forEach(btn => {
+        btn.addEventListener("click", () => {
+          copyToClipboard(btn.getAttribute("data-copy-url"), btn.getAttribute("data-copy-label"));
+        });
+      });
+
+      vp.querySelectorAll(".crit-tab-btn").forEach(btn => {
+        btn.addEventListener("click", () => {
+          activeCriteriaId = btn.getAttribute("data-crit-id");
+          renderMainViewport();
+        });
+      });
+
+      vp.querySelectorAll(".acc-toggle-btn").forEach(btn => {
+        btn.addEventListener("click", () => {
+          const key = btn.getAttribute("data-acc-key");
+          if (key) {
+            openAccordions[key] = !openAccordions[key];
+            renderMainViewport();
+          }
+        });
+      });
+
+      const btnExpandAll = document.getElementById("btnExpandAllCrit");
+      if (btnExpandAll) {
+        btnExpandAll.addEventListener("click", () => {
+          openAccordions["crit-legal"] = true;
+          openAccordions["crit-points"] = true;
+          openAccordions["crit-obs"] = true;
+          openAccordions["crit-excl"] = true;
+          renderMainViewport();
+        });
+      }
+      const btnCollapseAll = document.getElementById("btnCollapseAllCrit");
+      if (btnCollapseAll) {
+        btnCollapseAll.addEventListener("click", () => {
+          openAccordions["crit-legal"] = false;
+          openAccordions["crit-points"] = false;
+          openAccordions["crit-obs"] = false;
+          openAccordions["crit-excl"] = false;
+          renderMainViewport();
+        });
+      }
+
+      vp.querySelectorAll(".adv-subtab-btn").forEach(btn => {
+        btn.addEventListener("click", () => {
+          activeAdvocacySubtab = btn.getAttribute("data-adv-subtab");
+          renderMainViewport();
+        });
+      });
+
+      vp.querySelectorAll(".pbs-filter-btn").forEach(btn => {
+        btn.addEventListener("click", () => {
+          activePbsFilter = btn.getAttribute("data-pbs-filter");
+          renderMainViewport();
+        });
+      });
+
+      vp.querySelectorAll(".links-filter-btn").forEach(btn => {
+        btn.addEventListener("click", () => {
+          activeLinksFilter = btn.getAttribute("data-links-filter");
+          renderMainViewport();
+        });
+      });
+    }
+
+    function renderMainViewport() {
+      const vp = document.getElementById("mainViewport");
+      if (!vp) return;
+      if (activeTab === "home") {
+        vp.innerHTML = renderHomeView();
+      } else if (activeTab === "iep") {
+        vp.innerHTML = renderIepView();
+      } else if (activeTab === "referral") {
+        vp.innerHTML = renderReferralView();
+      } else if (activeTab === "advocacy") {
+        vp.innerHTML = renderAdvocacyView();
+      } else if (activeTab === "links") {
+        vp.innerHTML = renderLinksView();
+      }
+      bindViewportEvents();
+    }
+
+    function populateCloudModal() {
+      const body = document.getElementById("cloudModalBody");
+      if (!body) return;
+      const allItems = getAllSearchableItems();
+      body.innerHTML = `
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-2.5">
+          ${allItems.map(item => `
+            <div class="p-3.5 rounded-2xl bg-teal-50/50 border border-teal-100 flex items-center justify-between gap-3">
+              <div class="min-w-0">
+                <div class="text-[11px] font-bold text-teal-700">${item.category}</div>
+                <div class="font-black text-slate-900 text-xs sm:text-sm truncate mt-0.5">${item.title}</div>
+              </div>
+              <div class="flex items-center gap-1.5 shrink-0">
+                <a href="${item.url}" target="_blank" rel="noopener noreferrer"
+                  class="px-3 py-1.5 rounded-xl bg-teal-600 hover:bg-teal-700 text-white font-bold text-xs">
+                  開啟 ↗
+                </a>
+                <button type="button" data-copy-url="${item.url}" data-copy-label="${item.title}"
+                  class="modal-copy-btn px-2.5 py-1.5 rounded-xl bg-white border border-teal-200 text-teal-800 text-xs font-bold">
+                  複製
+                </button>
+              </div>
+            </div>
+          `).join("")}
+        </div>
+      `;
+      body.querySelectorAll(".modal-copy-btn").forEach(btn => {
+        btn.addEventListener("click", () => {
+          copyToClipboard(btn.getAttribute("data-copy-url"), btn.getAttribute("data-copy-label"));
+        });
+      });
+    }
+
+    function handleSearch(query) {
+      const sec = document.getElementById("searchResultsSection");
+      const kwEl = document.getElementById("searchKeywordDisplay");
+      const grid = document.getElementById("searchResultsGrid");
+      const clearBtn = document.getElementById("clearSearchBtn");
+      const q = (query || "").trim().toLowerCase();
+
+      if (!q) {
+        sec.classList.add("hidden");
+        clearBtn.classList.add("hidden");
+        return;
+      }
+
+      clearBtn.classList.remove("hidden");
+      sec.classList.remove("hidden");
+      kwEl.textContent = `「${query}」`;
+
+      const matches = getAllSearchableItems().filter(item =>
+        item.title.toLowerCase().includes(q) ||
+        item.category.toLowerCase().includes(q) ||
+        item.desc.toLowerCase().includes(q)
+      );
+
+      if (matches.length === 0) {
+        grid.innerHTML = `
+          <div class="col-span-full py-5 text-center text-slate-500 text-xs sm:text-sm">
+            找不到符合「${query}」的項目，請試試搜尋「學習障礙」、「ABCR」或「王意中」。
+          </div>
+        `;
+        return;
+      }
+
+      grid.innerHTML = matches.map(m => `
+        <div class="p-4 rounded-2xl bg-white border border-amber-200 flex flex-col justify-between gap-3 shadow-2xs">
+          <div>
+            <span class="text-[11px] font-bold text-teal-700">${m.category}</span>
+            <h4 class="font-black text-slate-900 text-sm mt-1">${m.title}</h4>
+            <p class="text-xs text-slate-600 mt-1 line-clamp-2">${m.desc}</p>
+          </div>
+          <div class="flex items-center gap-2 pt-2 border-t border-slate-100">
+            <a href="${m.url}" target="_blank" rel="noopener noreferrer"
+              class="flex-1 text-center py-1.5 px-3 rounded-xl bg-teal-600 hover:bg-teal-700 text-white font-bold text-xs">
+              開啟連結 ↗
+            </a>
+            <button type="button" data-search-tab="${m.tab}" data-search-subtab="${m.subtab || ''}"
+              class="search-jump-btn py-1.5 px-3 rounded-xl bg-teal-50 hover:bg-teal-100 border border-teal-200 text-teal-900 font-bold text-xs">
+              前往分頁
+            </button>
+          </div>
+        </div>
+      `).join("");
+
+      grid.querySelectorAll(".search-jump-btn").forEach(btn => {
+        btn.addEventListener("click", () => {
+          activeTab = btn.getAttribute("data-search-tab");
+          const sub = btn.getAttribute("data-search-subtab");
+          if (sub) activeAdvocacySubtab = sub;
+          renderNavigation();
+          renderMainViewport();
+          sec.classList.add("hidden");
+        });
+      });
+    }
+
+    window.addEventListener("DOMContentLoaded", () => {
+      renderNavigation();
+      renderMainViewport();
+      populateCloudModal();
+
+      document.getElementById("brandHomeTrigger").addEventListener("click", () => {
+        activeTab = "home";
+        renderNavigation();
+        renderMainViewport();
+      });
+
+      const searchInput = document.getElementById("globalSearchInput");
+      const clearBtn = document.getElementById("clearSearchBtn");
+      const closeSearchBtn = document.getElementById("closeSearchBtn");
+
+      searchInput.addEventListener("input", e => handleSearch(e.target.value));
+      clearBtn.addEventListener("click", () => {
+        searchInput.value = "";
+        handleSearch("");
+      });
+      closeSearchBtn.addEventListener("click", () => {
+        searchInput.value = "";
+        handleSearch("");
+      });
+
+      const cloudModal = document.getElementById("cloudModal");
+      document.getElementById("btnCloudDirectory").addEventListener("click", () => {
+        cloudModal.classList.remove("hidden");
+      });
+      document.getElementById("btnCloseCloudModal").addEventListener("click", () => {
+        cloudModal.classList.add("hidden");
+      });
+      cloudModal.addEventListener("click", e => {
+        if (e.target === cloudModal) cloudModal.classList.add("hidden");
+      });
+
+    const btnFont = document.getElementById("btnFontScale");
+      const fontLabel = document.getElementById("fontScaleLabel");
+      const scales = ["1", "1.12", "1.22"];
+      const scaleNames = ["字級：標準", "字級：加大", "字級：特大"];
+      btnFont.addEventListener("click", () => {
+        fontScaleIdx = (fontScaleIdx + 1) % scales.length;
+        document.documentElement.style.setProperty("--font-scale", scales[fontScaleIdx]);
+        fontLabel.textContent = scaleNames[fontScaleIdx];
+        showToast(`已切換為「${scaleNames[fontScaleIdx]}」`, "🔍");
+      });
+    });
+  </script>
+</body>
+</html>
