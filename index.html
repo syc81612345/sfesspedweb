@@ -2,7 +2,7 @@
 <html lang="zh-Hant-TW">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
   <title>南投縣新豐國小特教資源網｜鑑定提報・IEP會議預約・特教宣導與支持服務</title>
   <!-- Tailwind CSS CDN -->
   <script src="https://cdn.tailwindcss.com/3.4.17"></script>
@@ -19,11 +19,15 @@
       --mint-bg: #f0fdfa;
       --mint-border: #ccfbf1;
     }
-    body {
-      font-family: 'Noto Sans TC', 'Inter', 'Microsoft JhengHei', sans-serif;
+    html, body {
+      margin: 0;
+      padding: 0;
+      width: 100%;
+      min-height: 100%;
       background-color: var(--bg-warm);
       color: #1E293B;
-      overflow-x: hidden;
+      font-family: 'Noto Sans TC', 'Inter', 'Microsoft JhengHei', sans-serif;
+      -webkit-text-size-adjust: 100%;
     }
     .scalable-text {
       font-size: calc(1rem * var(--font-scale));
@@ -66,7 +70,7 @@
         </div>
         <div>
           <div class="flex items-center gap-2">
-            <h1 class="text-lg sm:text-xl font-black text-teal-900 tracking-tight" id="headerSiteTitle">
+            <h1 class="text-base sm:text-xl font-black text-teal-900 tracking-tight" id="headerSiteTitle">
               南投縣新豐國小特教網
             </h1>
             <span class="hidden md:inline-block text-xs font-bold px-2.5 py-0.5 rounded-full bg-teal-50 text-teal-800 border border-teal-200">
@@ -74,19 +78,19 @@
             </span>
           </div>
           <p class="text-xs text-slate-500 hidden sm:block">
-            整合校內鑑定提報・內建 IEP 會議預約系統・特教宣導與專業團隊介紹
+            整合校內鑑定提報・內建 IEP 會議預約系統・特教宣導與支持服務
           </p>
         </div>
       </div>
 
       <!-- Search & Utility Controls -->
       <div class="flex items-center gap-2 flex-1 sm:flex-initial justify-end">
-        <div class="relative w-full sm:w-56 md:w-64">
+        <div class="relative w-full sm:w-48 md:w-60">
           <span class="absolute left-3 top-1/2 -translate-y-1/2 text-teal-600 text-sm pointer-events-none">🔍</span>
           <input
             id="globalSearchInput"
             type="search"
-            placeholder="搜尋表單、辦法、正向行為支持..."
+            placeholder="搜尋表單、辦法..."
             class="w-full pl-9 pr-7 py-1.5 text-xs sm:text-sm rounded-full border-2 border-teal-100 bg-teal-50/50 text-slate-800 placeholder-slate-400 focus:bg-white focus:outline-none focus:border-teal-500 transition"
           />
           <button id="clearSearchBtn" type="button" class="hidden absolute right-2.5 top-1/2 -translate-y-1/2 text-slate-400 hover:text-slate-600 text-xs">
@@ -203,7 +207,7 @@
           { id: "ld", icon: "📘", name: "學習障礙提報相關", categoryBadge: "學習障礙", description: "學習障礙轉介前介入紀錄、觀察表件與提報檔案。", url: "https://drive.google.com/drive/folders/1hUWeFRXGhU0LWsKZy4fS2fBCrbD67EbL" },
           { id: "ebd", icon: "🧡", name: "情緒障礙提報相關", categoryBadge: "情緒行為障礙", description: "情緒行為障礙觀察紀錄、行為功能分析與轉介表件。", url: "https://drive.google.com/drive/folders/17zuHswvRHE3XNZ2e6XaJQEeJij0rH4SL" },
           { id: "id", icon: "🌱", name: "智能障礙提報相關", categoryBadge: "智能障礙", description: "智能障礙適應行為觀察、學習能力評估與提報表件。", url: "https://drive.google.com/drive/folders/1Jwrja0F1kAMGbar9A4ob11BmzpG14Aqf" },
-          { id: "asd", icon: "🧩", name: "自閉症提報相關", categoryBadge: "自閉症", description: "自閉症人際互動、溝通與固著行為觀察及提報表件。", url: "https://drive.google.com/drive/folders/1f72loA6pU_J1j98LEXaG0xM6JdKXPS7i" }
+          { id: "asd", icon: "🧩", name: "自閉症提報相關", categoryBadge: "自閉症", description: "自閉症人際互動、溝通與固著行為觀察及提報表件。", url: "https://drive.google.com/drive/folders/1f72loA6pU_J1j98LEXaG14Aqf" }
         ],
         criteriaCategories: [
           {
@@ -213,12 +217,12 @@
             shortName: "學習障礙",
             folderUrl: "https://drive.google.com/drive/folders/1hUWeFRXGhU0LWsKZy4fS2fBCrbD67EbL",
             legalArticle: "依據《身心障礙及資賦優異學生鑑定辦法》第 10 條",
-            legalDefinition: "本法第三條第九款所稱學習障礙，統稱神經心理功能異常而顯現出注意、記憶、理解、知覺、知覺動作、推理等能力有問題，致在聽、說、讀、寫或算等學習上有顯著困難者；其障礙並非因感官、智能、情緒等障礙因素或文化刺激不足、教學不當等環境因素所直接造成之結果。",
+            legalDefinition: "本法第三條第九款所稱學習障礙，統稱神經心理功能異常而顯現出注意、記憶、理解、知覺、知覺動作、推理等能力有問題，致在聽、說、讀、寫 or 算等學習上有顯著困難者；其障礙並非因感官、智能、情緒等障礙因素或文化刺激不足、教學不當等環境因素所直接造成之結果。",
             criteriaIntro: "前項所定學習障礙，其鑑定基準依下列各款規定：",
             criteriaPoints: [
               "一、智力正常或在正常程度以上：指學生之認知發展及整體智力表現達一般常態水準。",
               "二、個人內在能力有顯著差異：指學生之認知能力與學業成就表現間有顯著差距。",
-              "三、聽覺理解、口語表達、識字、閱讀理解, 書寫、數學運算等學習表現有顯著困難，且經確定一般教育所提供之介入，仍難有效改善。"
+              "三、聽覺理解、口語表達、識字、閱讀理解、書寫、數學運算等學習表現有顯著困難，且經確定一般教育所提供之介入，仍難有效改善。"
             ],
             subtypes: [
               { name: "閱讀障礙（識字與理解困難）", desc: "認字量明顯少於同年級學生、字音與字形連結困難，朗讀時常跳字、漏行或唸錯。" },
@@ -277,7 +281,7 @@
             icon: "🧩",
             title: "自閉症辦法與鑑定基準",
             shortName: "自閉症",
-            folderUrl: "https://drive.google.com/drive/folders/1f72loA6pU_J1j98LEXaG0xM6JdKXPS7i",
+            folderUrl: "https://drive.google.com/drive/folders/1f72loA6pU_J1j98LEXaG14Aqf",
             legalArticle: "依據《身心障礙及資賦優異學生鑑定辦法》第 12 條",
             legalDefinition: "本法第三條第十一款所稱自閉症，指因神經心理功能異常而顯現出溝通、社會互動、行為及興趣表現上有嚴重問題，致在學習及生活適應上有顯著困難者。",
             criteriaIntro: "前項所定自閉症，其鑑定基準依下列各款規定：",
@@ -362,6 +366,7 @@
       { id: "iep", icon: "📅", label: "IEP 會議預約" },
       { id: "referral", icon: "📋", label: "鑑定提報專區" },
       { id: "advocacy", icon: "💡", label: "特教宣導資源" },
+      { id: "communication", icon: "💬", label: "運作與親師溝通" },
       { id: "links", icon: "🔗", label: "特教好站連結" }
     ];
 
@@ -502,9 +507,9 @@
                   <span>📅</span>
                   <span>立即預約 IEP 會議</span>
                 </button>
-                <button type="button" data-goto-tab="referral" class="hero-jump-btn flex items-center gap-2 px-5 py-3 rounded-2xl bg-white hover:bg-teal-50 text-teal-900 border-2 border-teal-200 font-black text-sm transition">
-                  <span>📋</span>
-                  <span>鑑定提報與基準辦法</span>
+                <button type="button" data-goto-tab="communication" class="hero-jump-btn flex items-center gap-2 px-5 py-3 rounded-2xl bg-white hover:bg-teal-50 text-teal-900 border-2 border-teal-200 font-black text-sm transition">
+                  <span>💬</span>
+                  <span>資源班運作與親師溝通</span>
                 </button>
               </div>
             </div>
@@ -527,19 +532,19 @@
                 </div>
               </button>
 
-              <button type="button" data-goto-tab="advocacy" data-goto-subtab="pbs" class="hero-jump-btn text-left p-4 rounded-2xl bg-white hover:bg-emerald-50/60 border-2 border-emerald-200 transition shadow-2xs">
-                <div class="text-2xl mb-1">📂</div>
-                <div class="font-black text-slate-900 text-sm">PBS 行為介入表件</div>
+              <button type="button" data-goto-tab="communication" class="hero-jump-btn text-left p-4 rounded-2xl bg-white hover:bg-emerald-50/60 border-2 border-emerald-200 transition shadow-2xs">
+                <div class="text-2xl mb-1">💬</div>
+                <div class="font-black text-slate-900 text-sm">資源班運作與親師溝通</div>
                 <div class="text-xs text-emerald-800 font-bold mt-1">
-                  ABCR 紀錄表與 8 份表件 →
+                  抽離外加與溝通指南 →
                 </div>
               </button>
 
-              <button type="button" data-goto-tab="advocacy" data-goto-subtab="therapists" class="hero-jump-btn text-left p-4 rounded-2xl bg-white hover:bg-purple-50/60 border-2 border-purple-200 transition shadow-2xs">
-                <div class="text-2xl mb-1">🩺</div>
-                <div class="font-black text-slate-900 text-sm">專業團隊與助理員</div>
+              <button type="button" data-goto-tab="advocacy" data-goto-subtab="pbs" class="hero-jump-btn text-left p-4 rounded-2xl bg-white hover:bg-purple-50/60 border-2 border-purple-200 transition shadow-2xs">
+                <div class="text-2xl mb-1">📂</div>
+                <div class="font-black text-slate-900 text-sm">PBS 行為介入表件</div>
                 <div class="text-xs text-purple-800 font-bold mt-1">
-                  4 類治療師與支持服務 →
+                  ABCR 紀錄表與 8 份表件 →
                 </div>
               </button>
             </div>
@@ -651,9 +656,8 @@
             </a>
           </div>
 
-          <!-- Embedded Google Apps Script Iframe -->
-          <div class="w-full rounded-2xl overflow-hidden border-2 border-teal-200 bg-white shadow-inner" style="height: 750px;">
-            <iframe src="${GAS_WEB_APP_URL}" class="w-full h-full border-0" title="新豐國小IEP會議預約系統"></iframe>
+          <div class="w-full rounded-2xl overflow-hidden border-2 border-teal-200 bg-white shadow-inner">
+            <iframe src="${GAS_WEB_APP_URL}" class="w-full border-0" style="min-height: 800px; height: 100vh;" title="新豐國小IEP會議預約系統"></iframe>
           </div>
         </div>
       `;
@@ -861,6 +865,131 @@
                       ${currentCrit.referralRequirements.map(req => `<li class="leading-relaxed">• ${req}</li>`).join("")}
                     </ul>
                   </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+      `;
+    }
+
+    function renderCommunicationView() {
+      return `
+        <section class="warm-card p-6 sm:p-8 space-y-6">
+          <div class="border-b border-teal-100 pb-4 flex items-center gap-3">
+            <span class="w-12 h-12 rounded-2xl bg-teal-100 border border-teal-300 flex items-center justify-center text-2xl">💬</span>
+            <div>
+              <h2 class="text-xl sm:text-2xl font-black text-teal-950">資源班運作模式與親師溝通實務指南</h2>
+              <p class="text-xs sm:text-sm text-slate-500">協助普通班導師與家長認識特教支援，化解標籤化焦慮，攜手支持孩子成長</p>
+            </div>
+          </div>
+
+          <div class="space-y-4">
+            <div class="flex items-center gap-2">
+              <span class="text-lg">🏫</span>
+              <h3 class="font-black text-teal-900 text-base sm:text-lg">一、 校內資源班的三大運作模式</h3>
+            </div>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+              <div class="p-5 rounded-2xl bg-teal-50/50 border-2 border-teal-100 space-y-2">
+                <div class="flex items-center justify-between">
+                  <span class="text-xs font-bold px-2.5 py-0.5 rounded-full bg-white border border-teal-200 text-teal-800">抽離式服務</span>
+                  <span class="text-xl">🎒</span>
+                </div>
+                <h4 class="font-black text-slate-900 text-sm sm:text-base">抽離課程</h4>
+                <p class="text-xs sm:text-sm text-slate-600 leading-relaxed">
+                  學生於普通班的特定學科(如國語/數學課)至資源班上課。
+                </p>
+              </div>
+
+              <div class="p-5 rounded-2xl bg-teal-50/50 border-2 border-teal-100 space-y-2">
+                <div class="flex items-center justify-between">
+                  <span class="text-xs font-bold px-2.5 py-0.5 rounded-full bg-white border border-teal-200 text-teal-800">外加式服務</span>
+                  <span class="text-xl">🧩</span>
+                </div>
+                <h4 class="font-black text-slate-900 text-sm sm:text-base">外加課程</h4>
+                <p class="text-xs sm:text-sm text-slate-600 leading-relaxed">
+                  利用早自習、午休、課後或彈性課程時間至資源班上課。
+                </p>
+              </div>
+
+              <div class="p-5 rounded-2xl bg-teal-50/50 border-2 border-teal-100 space-y-2">
+                <div class="flex items-center justify-between">
+                  <span class="text-xs font-bold px-2.5 py-0.5 rounded-full bg-white border border-teal-200 text-teal-800">間接服務</span>
+                  <span class="text-xl">🤝</span>
+                </div>
+                <h4 class="font-black text-slate-900 text-sm sm:text-base">間接服務</h4>
+                <p class="text-xs sm:text-sm text-slate-600 leading-relaxed">
+                  特教老師與普通班導師、任課老師進行特教相關諮詢與協同合作。
+                </p>
+              </div>
+            </div>
+          </div>
+
+          <div class="space-y-4 pt-4 border-t border-teal-100">
+            <div class="flex items-center gap-2">
+              <span class="text-lg">💬</span>
+              <h3 class="font-black text-teal-900 text-base sm:text-lg">二、 親師溝通指南：如何與家長談鑑定與特教服務</h3>
+            </div>
+
+            <div class="bg-amber-50/60 border-2 border-amber-200 rounded-2xl p-5 space-y-2">
+              <h4 class="font-black text-amber-950 text-sm sm:text-base">💡 溝通核心：從「標籤」轉移到「孩子的需求」</h4>
+              <p class="text-xs sm:text-sm text-slate-700 leading-relaxed">
+                家長的抗拒往往來自對「標籤化」的恐懼或擔心孩子被同儕排擠。溝通時能讓家長明白：<strong>特教鑑定是要評估孩子是否有特教的需求，也能夠在未來提供他適當的資源，像是課程和評量的調整</strong>，讓他在學習和同儕相處上可以累積成功的經驗、找到學習的自信。
+              </p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+              <div class="p-4 rounded-2xl bg-white border-2 border-teal-100 space-y-2">
+                <div class="text-xs font-black text-teal-800">步驟一：建立同盟，肯定付出</div>
+                <p class="text-xs sm:text-sm text-slate-700 leading-relaxed">
+                  先肯定家長在背後付出的心力與辛勞。
+                </p>
+                <div class="p-3 rounded-xl bg-teal-50 text-xs text-teal-950 italic border border-teal-200">
+                  「媽媽，這陣子我們都看到妳對孩子功課的用心，老師非常感謝。孩子其實很努力在學習，但在寫字或抄聯絡簿時常常卡住，看得出他自己也很挫折……」
+                </div>
+              </div>
+
+              <div class="p-4 rounded-2xl bg-white border-2 border-teal-100 space-y-2">
+                <div class="text-xs font-black text-teal-800">步驟二：客觀描述事實，聚焦困擾</div>
+                <p class="text-xs sm:text-sm text-slate-700 leading-relaxed">
+                  準備具體的平時考卷或作業簿，指出孩子在學習上需要被幫忙的地方。
+                </p>
+                <div class="p-3 rounded-xl bg-teal-50 text-xs text-teal-950 italic border border-teal-200">
+                  「我們來看這張考卷，孩子不是不會思考，而是每次寫到這裡時常常漏字或寫到哭出來。我們希望一起找方法，讓他學習更有自信。」
+                </div>
+              </div>
+
+              <div class="p-4 rounded-2xl bg-white border-2 border-teal-100 space-y-2">
+                <div class="text-xs font-black text-teal-800">步驟三：介紹校內資源與支持</div>
+                <p class="text-xs sm:text-sm text-slate-700 leading-relaxed">
+                  向家長說明資源班與特教的介入，是為了提供他適合的資源，能在學習或人際相處上更有自信。
+                </p>
+                <div class="p-3 rounded-xl bg-teal-50 text-xs text-teal-950 italic border border-teal-200">
+                  「學校有資源班老師可以配合他的能力做課程調整，帶他用更適合他的方法學習。」
+                </div>
+              </div>
+
+              <div class="p-4 rounded-2xl bg-white border-2 border-teal-100 space-y-2">
+                <div class="text-xs font-black text-teal-800">步驟四：強調彈性，隨時調整</div>
+                <p class="text-xs sm:text-sm text-slate-700 leading-relaxed">
+                  讓家長放心，評量與服務都是為了找出孩子的需求，陪他一起成長，隨時可以根據適應狀況滾動調整。
+                </p>
+                <div class="p-3 rounded-xl bg-teal-50 text-xs text-teal-950 italic border border-teal-200">
+                  「我們現在只是先申請評估與資源，讓孩子在學校多一份保護傘。如果孩子適應得很好，隨時都能討論調整。」
+                </div>
+              </div>
+            </div>
+
+            <div class="bg-slate-50 border border-slate-200 rounded-2xl p-5 space-y-3">
+              <h4 class="font-black text-slate-900 text-sm sm:text-base">🛡️ 實務現場：常見家長抗拒與溫柔回應</h4>
+              <div class="space-y-2.5 text-xs sm:text-sm text-slate-700">
+                <div class="p-3 bg-white rounded-xl border border-slate-200 space-y-1">
+                  <div class="font-bold text-rose-800">抗拒 1：「我的孩子很正常，他只是比較慢，不需要去資源班！」</div>
+                  <div class="text-slate-600"><strong>溫柔回應</strong>：「對呀，他真的很棒！正因為他很努力，我們才更心疼他每天花三倍時間寫功課。去資源班不是因為他不好，而是去能根據他的需求，去找到適合的學習方式，更快樂的學習。」</div>
+                </div>
+                <div class="p-3 bg-white rounded-xl border border-slate-200 space-y-1">
+                  <div class="font-bold text-rose-800">抗拒 2：「去資源班會不會被同學笑？會不會被貼標籤？」</div>
+                  <div class="text-slate-600"><strong>溫柔回應</strong>：「學校老師在班級經營上會保護孩子的隱私，我們也都會定期進行全校的宣導及主動關心。請家長放心。」</div>
                 </div>
               </div>
             </div>
@@ -1278,9 +1407,12 @@
         vp.innerHTML = renderReferralView();
       } else if (activeTab === "advocacy") {
         vp.innerHTML = renderAdvocacyView();
+      } else if (activeTab === "communication") {
+        vp.innerHTML = renderCommunicationView();
       } else if (activeTab === "links") {
         vp.innerHTML = renderLinksView();
       }
+      window.scrollTo({ top: 0, behavior: "smooth" });
       bindViewportEvents();
     }
 
@@ -1417,7 +1549,7 @@
         if (e.target === cloudModal) cloudModal.classList.add("hidden");
       });
 
-    const btnFont = document.getElementById("btnFontScale");
+      const btnFont = document.getElementById("btnFontScale");
       const fontLabel = document.getElementById("fontScaleLabel");
       const scales = ["1", "1.12", "1.22"];
       const scaleNames = ["字級：標準", "字級：加大", "字級：特大"];
