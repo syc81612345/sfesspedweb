@@ -12,7 +12,6 @@
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Noto+Sans+TC:wght@400;500;700;900&display=swap" rel="stylesheet">
   <style>
     :root {
-      --font-scale: 1;
       --primary: #00897b;
       --primary-dark: #0f766e;
       --bg-warm: #FAFDFC;
@@ -28,10 +27,6 @@
       color: #1E293B;
       font-family: 'Noto Sans TC', 'Inter', 'Microsoft JhengHei', sans-serif;
       -webkit-text-size-adjust: 100%;
-    }
-    .scalable-text {
-      font-size: calc(1rem * var(--font-scale));
-      line-height: calc(1.75rem * var(--font-scale));
     }
     .warm-card {
       background: #FFFFFF;
@@ -102,11 +97,6 @@
           <span>📂</span>
           <span class="hidden md:inline">雲端總覽</span>
         </button>
-
-        <button id="btnFontScale" type="button" class="shrink-0 flex items-center gap-1 px-3 py-1.5 rounded-full text-xs sm:text-sm font-bold bg-teal-50 hover:bg-teal-100 text-teal-900 border-2 border-teal-200 transition" title="切換字體大小">
-          <span>🔍</span>
-          <span id="fontScaleLabel">字級：標準</span>
-        </button>
       </div>
     </div>
 
@@ -136,7 +126,7 @@
     </div>
   </section>
 
-  <main class="flex-1 max-w-6xl w-full mx-auto px-4 sm:px-6 py-6 space-y-6" id="mainViewport">
+  <main class="flex-1 max-w-6xl w-full mx-auto px-4 sm:px-6 py-8 space-y-6" id="mainViewport">
     <!-- Populated by JS -->
   </main>
 
@@ -148,7 +138,7 @@
           <span class="text-2xl">📂</span>
           <div>
             <h3 class="font-black text-base sm:text-lg">全站表單與雲端資料夾快速目錄</h3>
-            <p class="text-xs text-teal-100">點擊即可直接開啟對應 Google 表單、雲端硬碟或複製連結</p>
+            <p class="text-xs text-teal-100">點擊即可直接開啟對應 Google 表單或雲端硬碟</p>
           </div>
         </div>
         <button id="btnCloseCloudModal" type="button" class="w-8 h-8 rounded-full bg-white/20 hover:bg-white/30 flex items-center justify-center text-white font-bold">
@@ -186,10 +176,9 @@
     const SITE_CONFIG = {
       siteInfo: {
         schoolName: "南投縣新豐國小",
-        siteTitle: "南投縣新豐國小特教資源網",
+        siteTitle: "南投縣新豐國小特教網",
         portalTitle: "新豐國小特殊教育資源整合平台",
-        heroSubtitle: "溫暖支持每一位獨特的孩子，陪伴親師生共融成長",
-        announcement: "🔔 大提醒：導師填寫「鑑定安置新個案提報調查」線上表單後，請記得主動通知特教教師！！！！！"
+        heroSubtitle: "溫暖支持每一位獨特的孩子，陪伴親師生共融成長。"
       },
       referralZone: {
         mainForm: {
@@ -384,7 +373,6 @@
     let activeCriteriaId = "ld";
     let activePbsFilter = "all";
     let activeLinksFilter = "all";
-    let fontScaleIdx = 0;
 
     let openAccordions = {
       "crit-legal": true,
@@ -403,18 +391,6 @@
       box.classList.remove("hidden");
       clearTimeout(window._toastTimer);
       window._toastTimer = setTimeout(() => box.classList.add("hidden"), 2600);
-    }
-
-    function copyToClipboard(text, label) {
-      if (navigator.clipboard && navigator.clipboard.writeText) {
-        navigator.clipboard.writeText(text).then(() => {
-          showToast(`已複製「${label}」`, "📋");
-        }).catch(() => {
-          showToast(`已準備內容：${label}`, "📋");
-        });
-      } else {
-        showToast(`已準備內容：${label}`, "📋");
-      }
     }
 
     function getAllSearchableItems() {
@@ -472,37 +448,26 @@
 
     function renderHomeView() {
       const info = SITE_CONFIG.siteInfo;
-      const ref = SITE_CONFIG.referralZone;
-      const adv = SITE_CONFIG.advocacyResources;
 
       return `
-        <!-- Top Notice Strip -->
-        <div class="bg-amber-50 border-2 border-amber-200 rounded-2xl px-4 py-3 flex flex-wrap items-center justify-between gap-2 shadow-2xs">
-          <p class="text-xs sm:text-sm font-bold text-amber-900">
-            ${info.announcement}
-          </p>
-          <a href="${ref.mainForm.url}" target="_blank" rel="noopener noreferrer"
-            class="shrink-0 px-3 py-1 rounded-full bg-amber-500 hover:bg-amber-600 text-white font-bold text-xs transition">
-            填寫提報表單 ↗
-          </a>
-        </div>
-
-        <!-- Hero Banner -->
-        <section class="warm-card bg-gradient-to-br from-teal-50/90 via-white to-emerald-50/70 p-6 sm:p-8">
-          <div class="grid grid-cols-1 lg:grid-cols-12 gap-6 items-center">
-            <div class="lg:col-span-7 space-y-3.5">
+        <!-- Split Hero Banner Matching User Request -->
+        <section class="warm-card bg-gradient-to-br from-teal-50/90 via-white to-emerald-50/70 p-6 sm:p-10">
+          <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
+            
+            <!-- Left Info Area -->
+            <div class="lg:col-span-7 space-y-5">
               <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-teal-100/80 text-teal-900 text-xs font-black border border-teal-200">
                 <span>🏫 ${info.schoolName}</span>
                 <span>·</span>
                 <span>特殊教育資源</span>
               </div>
-              <h2 class="text-2xl sm:text-3xl font-black text-teal-950 tracking-tight leading-snug">
+              <h2 class="text-2xl sm:text-3xl md:text-4xl font-black text-teal-950 tracking-tight leading-tight">
                 ${info.portalTitle}
               </h2>
-              <p class="text-slate-600 scalable-text">
-                ${info.heroSubtitle}。
+              <p class="text-slate-600">
+                ${info.heroSubtitle}
               </p>
-              <div class="flex flex-wrap items-center gap-3 pt-1">
+              <div class="flex flex-wrap items-center gap-3 pt-2">
                 <button type="button" data-goto-tab="iep" class="hero-jump-btn flex items-center gap-2 px-5 py-3 rounded-2xl bg-teal-600 hover:bg-teal-700 text-white font-black text-sm shadow-sm transition">
                   <span>📅</span>
                   <span>立即預約 IEP 會議</span>
@@ -514,10 +479,10 @@
               </div>
             </div>
 
-            <!-- Shortcut Grid -->
-            <div class="lg:col-span-5 grid grid-cols-2 gap-3">
+            <!-- Right Shortcut Cards -->
+            <div class="lg:col-span-5 grid grid-cols-1 sm:grid-cols-2 gap-3.5">
               <button type="button" data-goto-tab="iep" class="hero-jump-btn text-left p-4 rounded-2xl bg-white hover:bg-teal-50/60 border-2 border-teal-200 transition shadow-2xs">
-                <div class="text-2xl mb-1">📅</div>
+                <div class="text-2xl mb-1.5">📅</div>
                 <div class="font-black text-teal-950 text-sm">新豐國小IEP會議預約</div>
                 <div class="text-xs text-teal-700 font-bold mt-1">
                   線上登記與時段選擇 →
@@ -525,7 +490,7 @@
               </button>
 
               <button type="button" data-goto-tab="referral" class="hero-jump-btn text-left p-4 rounded-2xl bg-white hover:bg-amber-50/60 border-2 border-amber-200 transition shadow-2xs">
-                <div class="text-2xl mb-1">📋</div>
+                <div class="text-2xl mb-1.5">📋</div>
                 <div class="font-black text-slate-900 text-sm">鑑定安置提報專區</div>
                 <div class="text-xs text-amber-800 font-bold mt-1">
                   線上調查與 4 大障別基準 →
@@ -533,7 +498,7 @@
               </button>
 
               <button type="button" data-goto-tab="communication" class="hero-jump-btn text-left p-4 rounded-2xl bg-white hover:bg-emerald-50/60 border-2 border-emerald-200 transition shadow-2xs">
-                <div class="text-2xl mb-1">💬</div>
+                <div class="text-2xl mb-1.5">💬</div>
                 <div class="font-black text-slate-900 text-sm">資源班運作與親師溝通</div>
                 <div class="text-xs text-emerald-800 font-bold mt-1">
                   抽離外加與溝通指南 →
@@ -541,99 +506,14 @@
               </button>
 
               <button type="button" data-goto-tab="advocacy" data-goto-subtab="pbs" class="hero-jump-btn text-left p-4 rounded-2xl bg-white hover:bg-purple-50/60 border-2 border-purple-200 transition shadow-2xs">
-                <div class="text-2xl mb-1">📂</div>
+                <div class="text-2xl mb-1.5">📂</div>
                 <div class="font-black text-slate-900 text-sm">PBS 行為介入表件</div>
                 <div class="text-xs text-purple-800 font-bold mt-1">
                   ABCR 紀錄表與 8 份表件 →
                 </div>
               </button>
             </div>
-          </div>
-        </section>
 
-        <!-- Two Main Highlight Cards -->
-        <section class="grid grid-cols-1 md:grid-cols-2 gap-5">
-          <div class="warm-card warm-card-hover p-6 flex flex-col justify-between gap-4">
-            <div class="space-y-2.5">
-              <div class="flex items-center justify-between">
-                <span class="text-xs font-black px-3 py-1 rounded-full bg-teal-100 text-teal-900">
-                  📌 內建預約系統
-                </span>
-                <span class="text-xs font-bold text-slate-500">內含開會時間小卡</span>
-              </div>
-              <h3 class="text-lg sm:text-xl font-black text-teal-950">
-                新豐國小IEP會議預約
-              </h3>
-              <p class="text-xs sm:text-sm text-slate-600 leading-relaxed">
-                選擇日期、教師與時段，填寫名字即可完成登記。
-              </p>
-            </div>
-            <div class="pt-3 border-t border-teal-100 flex items-center justify-between">
-              <span class="text-xs font-bold text-teal-700">誤填請來訊告知</span>
-              <button type="button" data-goto-tab="iep" class="hero-jump-btn px-4 py-2 rounded-xl bg-teal-600 hover:bg-teal-700 text-white font-bold text-xs sm:text-sm transition">
-                前往預約會議 →
-              </button>
-            </div>
-          </div>
-
-          <div class="warm-card warm-card-hover p-6 flex flex-col justify-between gap-4 border-amber-200">
-            <div class="space-y-2.5">
-              <div class="flex items-center justify-between">
-                <span class="text-xs font-black px-3 py-1 rounded-full bg-amber-100 text-amber-900">
-                  📋 校內鑑定安置提報
-                </span>
-                <span class="text-xs font-bold text-slate-500">含說明手冊 PDF 與雲端表件</span>
-              </div>
-              <h3 class="text-lg sm:text-xl font-black text-slate-900">
-                新個案提報調查與各障別鑑定基準
-              </h3>
-              <p class="text-xs sm:text-sm text-slate-600 leading-relaxed">
-                提供導師填寫線上提報表單、下載雲端表件資料夾。
-              </p>
-            </div>
-            <div class="pt-3 border-t border-amber-100 flex items-center justify-between gap-2">
-              <a href="${ref.mainForm.url}" target="_blank" rel="noopener noreferrer" class="text-xs sm:text-sm font-bold text-amber-800 hover:text-amber-950 underline">
-                開啟 Google 提報表單 ↗
-              </a>
-              <button type="button" data-goto-tab="referral" class="hero-jump-btn px-4 py-2 rounded-xl bg-amber-500 hover:bg-amber-600 text-white font-bold text-xs sm:text-sm transition">
-                查看辦法與資料夾 →
-              </button>
-            </div>
-          </div>
-        </section>
-
-        <!-- Featured Advocacy Docs -->
-        <section class="warm-card p-6 space-y-4">
-          <div class="flex flex-wrap items-center justify-between gap-2 border-b border-teal-100 pb-3">
-            <div class="flex items-center gap-2">
-              <span class="text-xl">💡</span>
-              <h3 class="font-black text-slate-900 text-base sm:text-lg">特教宣導精選教材與支持資源</h3>
-            </div>
-            <button type="button" data-goto-tab="advocacy" class="hero-jump-btn text-xs sm:text-sm font-bold text-teal-700 hover:text-teal-900">
-              查看全部宣導與 PBS 表件 →
-            </button>
-          </div>
-
-          <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
-            ${adv.featuredCloudDocs.map(doc => `
-              <a href="${doc.url}" target="_blank" rel="noopener noreferrer"
-                class="p-4 rounded-2xl bg-teal-50/50 hover:bg-teal-50 border border-teal-200 transition flex flex-col justify-between gap-3 group">
-                <div class="space-y-1.5">
-                  <div class="flex items-center justify-between">
-                    <span class="text-xs font-bold px-2.5 py-0.5 rounded-full bg-white text-teal-800 border border-teal-200">${doc.tag}</span>
-                    <span class="text-xl">${doc.icon}</span>
-                  </div>
-                  <h4 class="font-bold text-slate-900 text-sm sm:text-base group-hover:text-teal-700 transition leading-snug">
-                    ${doc.title}
-                  </h4>
-                  <p class="text-xs text-slate-600 leading-relaxed">${doc.description}</p>
-                </div>
-                <div class="text-xs font-bold text-teal-700 flex items-center justify-between pt-2 border-t border-teal-100">
-                  <span>Google 雲端硬碟</span>
-                  <span>開啟閱覽 ↗</span>
-                </div>
-              </a>
-            `).join("")}
           </div>
         </section>
       `;
@@ -692,15 +572,11 @@
               <h3 class="text-lg font-black text-slate-900 pt-0.5">${ref.mainForm.title}</h3>
               <p class="text-xs sm:text-sm text-slate-700 leading-relaxed max-w-2xl">${ref.mainForm.description}</p>
             </div>
-            <div class="flex items-center gap-2 shrink-0 w-full md:w-auto">
+            <div class="shrink-0 w-full md:w-auto">
               <a href="${ref.mainForm.url}" target="_blank" rel="noopener noreferrer"
-                class="flex-1 md:flex-initial text-center px-5 py-3 rounded-2xl bg-amber-500 hover:bg-amber-600 text-white font-black text-xs sm:text-sm shadow-xs transition">
+                class="block text-center px-6 py-3 rounded-2xl bg-amber-500 hover:bg-amber-600 text-white font-black text-xs sm:text-sm shadow-xs transition">
                 前往填寫提報表單 ↗
               </a>
-              <button type="button" data-copy-url="${ref.mainForm.url}" data-copy-label="${ref.mainForm.title}"
-                class="btn-copy-link px-3.5 py-3 rounded-2xl bg-white hover:bg-amber-100 text-amber-900 border border-amber-300 text-xs font-bold transition">
-                複製連結
-              </button>
             </div>
           </div>
 
@@ -715,15 +591,11 @@
                   <h4 class="font-black text-slate-900 text-sm sm:text-base mt-2">${folder.name}</h4>
                   <p class="text-xs text-slate-600 mt-1 leading-relaxed">${folder.description}</p>
                 </div>
-                <div class="flex items-center gap-1.5 pt-2 border-t border-teal-100">
+                <div class="pt-2 border-t border-teal-100">
                   <a href="${folder.url}" target="_blank" rel="noopener noreferrer"
-                    class="flex-1 text-center py-2 px-3 rounded-xl bg-teal-600 hover:bg-teal-700 text-white font-bold text-xs transition">
+                    class="block text-center py-2 px-3 rounded-xl bg-teal-600 hover:bg-teal-700 text-white font-bold text-xs transition">
                     開啟雲端資料夾 ↗
                   </a>
-                  <button type="button" data-copy-url="${folder.url}" data-copy-label="${folder.name}"
-                    class="btn-copy-link py-2 px-2.5 rounded-xl bg-white hover:bg-teal-50 text-teal-800 border border-teal-200 text-xs font-bold">
-                    複製
-                  </button>
                 </div>
               </div>
             `).join("")}
@@ -794,7 +666,7 @@
                 </span>
               </button>
               <div class="${openAccordions["crit-legal"] ? "block" : "hidden"} px-5 py-4 border-t border-teal-100">
-                <p class="text-slate-700 scalable-text leading-relaxed">${currentCrit.legalDefinition}</p>
+                <p class="text-slate-700 leading-relaxed">${currentCrit.legalDefinition}</p>
               </div>
             </div>
 
@@ -807,7 +679,7 @@
               </button>
               <div class="${openAccordions["crit-points"] ? "block" : "hidden"} px-5 py-4 border-t border-teal-100 space-y-4">
                 <p class="text-xs sm:text-sm text-slate-600 font-bold">${currentCrit.criteriaIntro}</p>
-                <ul class="space-y-2 text-slate-800 scalable-text">
+                <ul class="space-y-2 text-slate-800">
                   ${currentCrit.criteriaPoints.map(pt => `
                     <li class="p-3 rounded-xl bg-teal-50/50 border border-teal-100 leading-relaxed">${pt}</li>
                   `).join("")}
@@ -985,7 +857,7 @@
               <div class="space-y-2.5 text-xs sm:text-sm text-slate-700">
                 <div class="p-3 bg-white rounded-xl border border-slate-200 space-y-1">
                   <div class="font-bold text-rose-800">抗拒 1：「我的孩子很正常，他只是比較慢，不需要去資源班！」</div>
-                  <div class="text-slate-600"><strong>溫柔回應</strong>：「對呀，他真的很棒！正因為他很努力，我們才更心疼他每天花三倍時間寫功課。去資源班不是因為他不好，而是去能根據他的需求，去找到適合的學習方式，更快樂的學習。」</div>
+                  <div class="text-slate-600"><strong>溫柔回應</strong>：「對呀，他真的很棒!正因為他很努力，我們才更心疼他每天花三倍時間寫功課。去資源班不是因為他不好，而是去能根據他的需求，去找到適合的學習方式，更快樂的學習。」</div>
                 </div>
                 <div class="p-3 bg-white rounded-xl border border-slate-200 space-y-1">
                   <div class="font-bold text-rose-800">抗拒 2：「去資源班會不會被同學笑？會不會被貼標籤？」</div>
@@ -1014,15 +886,11 @@
                   <h4 class="font-black text-slate-900 text-base leading-snug">${doc.title}</h4>
                   <p class="text-xs sm:text-sm text-slate-600 leading-relaxed">${doc.description}</p>
                 </div>
-                <div class="flex items-center gap-2 pt-3 border-t border-teal-100">
+                <div class="pt-3 border-t border-teal-100">
                   <a href="${doc.url}" target="_blank" rel="noopener noreferrer"
-                    class="flex-1 text-center py-2.5 px-3 rounded-xl bg-teal-600 hover:bg-teal-700 text-white font-bold text-xs transition">
+                    class="block text-center py-2.5 px-3 rounded-xl bg-teal-600 hover:bg-teal-700 text-white font-bold text-xs transition">
                     開啟雲端檔案 ↗
                   </a>
-                  <button type="button" data-copy-url="${doc.url}" data-copy-label="${doc.title}"
-                    class="btn-copy-link py-2.5 px-3 rounded-xl bg-white hover:bg-teal-50 border border-teal-200 text-teal-800 text-xs font-bold">
-                    複製
-                  </button>
                 </div>
               </div>
             `).join("")}
@@ -1038,7 +906,7 @@
                 <div class="space-y-2">
                   <div class="flex items-center justify-between">
                     <span class="text-xs font-bold text-amber-900 bg-white px-2.5 py-0.5 rounded-full border border-amber-200">
-                      ${art.category} · ${art.author}
+                      ${art.category} ·${art.author}
                     </span>
                     <span class="text-2xl">${art.icon}</span>
                   </div>
@@ -1164,15 +1032,11 @@
                 <h4 class="text-base sm:text-lg font-black">${pbs.title}</h4>
                 <p class="text-xs sm:text-sm text-teal-50">${pbs.description}</p>
               </div>
-              <div class="flex items-center gap-2 shrink-0">
+              <div class="shrink-0">
                 <a href="${pbs.folderUrl}" target="_blank" rel="noopener noreferrer"
-                  class="px-4 py-2.5 rounded-xl bg-amber-400 hover:bg-amber-300 text-slate-950 font-black text-xs sm:text-sm transition">
+                  class="inline-block px-4 py-2.5 rounded-xl bg-amber-400 hover:bg-amber-300 text-slate-950 font-black text-xs sm:text-sm transition">
                   開啟雲端總資料夾 ↗
                 </a>
-                <button type="button" data-copy-url="${pbs.folderUrl}" data-copy-label="${pbs.title}"
-                  class="btn-copy-link px-3 py-2.5 rounded-xl bg-white/15 hover:bg-white/25 text-white text-xs font-bold">
-                  複製
-                </button>
               </div>
             </div>
 
@@ -1297,15 +1161,11 @@
                   <h3 class="font-black text-slate-900 text-base">${item.title}</h3>
                   <p class="text-xs sm:text-sm text-slate-600 leading-relaxed">${item.description}</p>
                 </div>
-                <div class="flex items-center gap-2 pt-3 border-t border-teal-100">
+                <div class="pt-3 border-t border-teal-100">
                   <a href="${item.url}" target="_blank" rel="noopener noreferrer"
-                    class="flex-1 text-center py-2 px-4 rounded-xl bg-teal-600 hover:bg-teal-700 text-white font-bold text-xs transition">
+                    class="block text-center py-2 px-4 rounded-xl bg-teal-600 hover:bg-teal-700 text-white font-bold text-xs transition">
                     前往網站 ↗
                   </a>
-                  <button type="button" data-copy-url="${item.url}" data-copy-label="${item.title}"
-                    class="btn-copy-link py-2 px-3 rounded-xl bg-white hover:bg-teal-50 border border-teal-200 text-teal-800 text-xs font-bold">
-                    複製
-                  </button>
                 </div>
               </div>
             `).join("")}
@@ -1327,12 +1187,6 @@
           renderNavigation();
           renderMainViewport();
           window.scrollTo({ top: 0, behavior: "smooth" });
-        });
-      });
-
-      vp.querySelectorAll(".btn-copy-link").forEach(btn => {
-        btn.addEventListener("click", () => {
-          copyToClipboard(btn.getAttribute("data-copy-url"), btn.getAttribute("data-copy-label"));
         });
       });
 
@@ -1428,25 +1282,16 @@
                 <div class="text-[11px] font-bold text-teal-700">${item.category}</div>
                 <div class="font-black text-slate-900 text-xs sm:text-sm truncate mt-0.5">${item.title}</div>
               </div>
-              <div class="flex items-center gap-1.5 shrink-0">
+              <div class="shrink-0">
                 <a href="${item.url}" target="_blank" rel="noopener noreferrer"
                   class="px-3 py-1.5 rounded-xl bg-teal-600 hover:bg-teal-700 text-white font-bold text-xs">
                   開啟 ↗
                 </a>
-                <button type="button" data-copy-url="${item.url}" data-copy-label="${item.title}"
-                  class="modal-copy-btn px-2.5 py-1.5 rounded-xl bg-white border border-teal-200 text-teal-800 text-xs font-bold">
-                  複製
-                </button>
               </div>
             </div>
           `).join("")}
         </div>
       `;
-      body.querySelectorAll(".modal-copy-btn").forEach(btn => {
-        btn.addEventListener("click", () => {
-          copyToClipboard(btn.getAttribute("data-copy-url"), btn.getAttribute("data-copy-label"));
-        });
-      });
     }
 
     function handleSearch(query) {
@@ -1547,17 +1392,6 @@
       });
       cloudModal.addEventListener("click", e => {
         if (e.target === cloudModal) cloudModal.classList.add("hidden");
-      });
-
-      const btnFont = document.getElementById("btnFontScale");
-      const fontLabel = document.getElementById("fontScaleLabel");
-      const scales = ["1", "1.12", "1.22"];
-      const scaleNames = ["字級：標準", "字級：加大", "字級：特大"];
-      btnFont.addEventListener("click", () => {
-        fontScaleIdx = (fontScaleIdx + 1) % scales.length;
-        document.documentElement.style.setProperty("--font-scale", scales[fontScaleIdx]);
-        fontLabel.textContent = scaleNames[fontScaleIdx];
-        showToast(`已切換為「${scaleNames[fontScaleIdx]}」`, "🔍");
       });
     });
   </script>
