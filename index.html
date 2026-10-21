@@ -31,14 +31,14 @@
     .warm-card {
       background: #FFFFFF;
       border: 2px solid #CCFBF1;
-      border-radius: 20px;
-      box-shadow: 0 6px 20px -4px rgba(0, 137, 123, 0.07);
+      border-radius: 24px;
+      box-shadow: 0 8px 24px -4px rgba(0, 137, 123, 0.08);
       transition: transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease;
     }
     .warm-card-hover:hover {
       transform: translateY(-2px);
       border-color: #5EEAD4;
-      box-shadow: 0 12px 24px -6px rgba(0, 137, 123, 0.13);
+      box-shadow: 0 12px 28px -6px rgba(0, 137, 123, 0.15);
     }
     .custom-scrollbar::-webkit-scrollbar {
       width: 6px;
@@ -56,11 +56,11 @@
 <body class="min-h-screen flex flex-col selection:bg-teal-200 selection:text-teal-950">
 
   <!-- Header -->
-  <header class="sticky top-0 z-40 bg-white/95 backdrop-blur border-b-2 border-teal-100 shadow-xs">
-    <div class="max-w-6xl mx-auto px-4 sm:px-6 py-3 flex flex-wrap items-center justify-between gap-3">
+  <header class="sticky top-0 z-40 bg-white/95 backdrop-blur border-b-2 border-teal-100 shadow-xs w-full">
+    <div class="w-full px-4 sm:px-8 py-3.5 flex flex-wrap items-center justify-between gap-3">
       <!-- Brand Identity -->
       <div class="flex items-center gap-3 cursor-pointer group" id="brandHomeTrigger">
-        <div class="w-11 h-11 rounded-2xl bg-gradient-to-br from-teal-500 to-emerald-600 flex items-center justify-center text-white text-xl font-black shadow-sm group-hover:scale-105 transition">
+        <div class="w-12 h-12 rounded-2xl bg-gradient-to-br from-teal-500 to-emerald-600 flex items-center justify-center text-white text-2xl font-black shadow-sm group-hover:scale-105 transition">
           🌱
         </div>
         <div>
@@ -68,7 +68,7 @@
             <h1 class="text-base sm:text-xl font-black text-teal-900 tracking-tight" id="headerSiteTitle">
               南投縣新豐國小特教網
             </h1>
-            <span class="hidden md:inline-block text-xs font-bold px-2.5 py-0.5 rounded-full bg-teal-50 text-teal-800 border border-teal-200">
+            <span class="hidden md:inline-block text-xs font-bold px-3 py-0.5 rounded-full bg-teal-50 text-teal-800 border border-teal-200">
               溫馨支持・共融成長
             </span>
           </div>
@@ -80,20 +80,20 @@
 
       <!-- Search & Utility Controls -->
       <div class="flex items-center gap-2 flex-1 sm:flex-initial justify-end">
-        <div class="relative w-full sm:w-48 md:w-60">
-          <span class="absolute left-3 top-1/2 -translate-y-1/2 text-teal-600 text-sm pointer-events-none">🔍</span>
+        <div class="relative w-full sm:w-48 md:w-64">
+          <span class="absolute left-3.5 top-1/2 -translate-y-1/2 text-teal-600 text-sm pointer-events-none">🔍</span>
           <input
             id="globalSearchInput"
             type="search"
             placeholder="搜尋表單、辦法..."
-            class="w-full pl-9 pr-7 py-1.5 text-xs sm:text-sm rounded-full border-2 border-teal-100 bg-teal-50/50 text-slate-800 placeholder-slate-400 focus:bg-white focus:outline-none focus:border-teal-500 transition"
+            class="w-full pl-10 pr-8 py-2 text-xs sm:text-sm rounded-full border-2 border-teal-100 bg-teal-50/50 text-slate-800 placeholder-slate-400 focus:bg-white focus:outline-none focus:border-teal-500 transition"
           />
-          <button id="clearSearchBtn" type="button" class="hidden absolute right-2.5 top-1/2 -translate-y-1/2 text-slate-400 hover:text-slate-600 text-xs">
+          <button id="clearSearchBtn" type="button" class="hidden absolute right-3 top-1/2 -translate-y-1/2 text-slate-400 hover:text-slate-600 text-xs">
             ✕
           </button>
         </div>
 
-        <button id="btnCloudDirectory" type="button" class="shrink-0 flex items-center gap-1 px-3 py-1.5 rounded-full text-xs sm:text-sm font-bold bg-amber-50 hover:bg-amber-100 text-amber-900 border-2 border-amber-200 transition" title="全站雲端連結一覽">
+        <button id="btnCloudDirectory" type="button" class="shrink-0 flex items-center gap-1.5 px-3.5 py-2 rounded-full text-xs sm:text-sm font-bold bg-amber-50 hover:bg-amber-100 text-amber-900 border-2 border-amber-200 transition" title="全站雲端連結一覽">
           <span>📂</span>
           <span class="hidden md:inline">雲端總覽</span>
         </button>
@@ -101,32 +101,33 @@
     </div>
 
     <!-- Navigation Bar -->
-    <nav class="bg-teal-50/60 border-t border-teal-100 px-4 sm:px-6 py-2">
-      <div class="max-w-6xl mx-auto flex items-center gap-2 overflow-x-auto custom-scrollbar" id="mainNavContainer">
+    <nav class="bg-teal-50/60 border-t border-teal-100 px-4 sm:px-8 py-2.5 w-full">
+      <div class="w-full flex items-center gap-2.5 overflow-x-auto custom-scrollbar" id="mainNavContainer">
         <!-- Populated by JS -->
       </div>
     </nav>
   </header>
 
   <!-- Global Search Results Drawer -->
-  <section id="searchResultsSection" class="hidden max-w-6xl w-full mx-auto px-4 sm:px-6 pt-5">
-    <div class="warm-card p-5 border-amber-300 bg-amber-50/40 space-y-3">
-      <div class="flex items-center justify-between border-b border-amber-200 pb-2.5">
+  <section id="searchResultsSection" class="hidden w-full px-4 sm:px-8 pt-5">
+    <div class="warm-card p-6 border-amber-300 bg-amber-50/40 space-y-3">
+      <div class="flex items-center justify-between border-b border-amber-200 pb-3">
         <div class="flex items-center gap-2">
-          <span class="text-lg">🔎</span>
+          <span class="text-xl">🔎</span>
           <h2 class="font-black text-slate-800 text-sm sm:text-base">
             全站快速搜尋結果：<span id="searchKeywordDisplay" class="text-teal-700"></span>
           </h2>
         </div>
-        <button id="closeSearchBtn" type="button" class="px-3 py-1 rounded-full text-xs font-bold bg-white hover:bg-slate-100 text-slate-700 border border-slate-200">
+        <button id="closeSearchBtn" type="button" class="px-3.5 py-1.5 rounded-full text-xs font-bold bg-white hover:bg-slate-100 text-slate-700 border border-slate-200">
           關閉 ✕
         </button>
       </div>
-      <div id="searchResultsGrid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-3"></div>
+      <div id="searchResultsGrid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-3.5"></div>
     </div>
   </section>
 
-  <main class="flex-1 max-w-6xl w-full mx-auto px-4 sm:px-6 py-8 space-y-6" id="mainViewport">
+  <!-- Main Viewport -->
+  <main class="flex-1 w-full px-4 sm:px-8 py-10 space-y-8" id="mainViewport">
     <!-- Populated by JS -->
   </main>
 
@@ -150,8 +151,8 @@
   </div>
 
   <!-- Footer -->
-  <footer class="bg-white border-t-2 border-teal-100 mt-12">
-    <div class="max-w-6xl mx-auto px-4 sm:px-6 py-6 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs sm:text-sm text-slate-500">
+  <footer class="bg-white border-t-2 border-teal-100 mt-16 w-full">
+    <div class="w-full px-4 sm:px-8 py-8 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs sm:text-sm text-slate-500">
       <div class="flex items-center gap-2">
         <span class="text-lg">🌱</span>
         <span class="font-bold text-teal-900">南投縣新豐國小特教資源網</span>
@@ -424,7 +425,7 @@
           <button
             type="button"
             data-tab-id="${t.id}"
-            class="nav-tab-btn shrink-0 flex items-center gap-1.5 px-4 py-2 rounded-2xl font-black text-xs sm:text-sm border-2 transition ${
+            class="nav-tab-btn shrink-0 flex items-center gap-1.5 px-4 py-2.5 rounded-2xl font-black text-xs sm:text-sm border-2 transition ${
               isActive
                 ? "bg-teal-600 text-white border-teal-700 shadow-xs"
                 : "bg-white hover:bg-teal-50 text-slate-700 border-teal-100"
@@ -441,7 +442,6 @@
           activeTab = btn.getAttribute("data-tab-id");
           renderNavigation();
           renderMainViewport();
-          window.scrollTo({ top: 0, behavior: "smooth" });
         });
       });
     }
@@ -450,29 +450,29 @@
       const info = SITE_CONFIG.siteInfo;
 
       return `
-        <!-- Split Hero Banner Matching User Request -->
-        <section class="warm-card bg-gradient-to-br from-teal-50/90 via-white to-emerald-50/70 p-6 sm:p-10">
-          <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
+        <!-- Larger & Bolder Full-Width Hero Banner -->
+        <section class="warm-card bg-gradient-to-br from-teal-50/95 via-white to-emerald-50/80 p-8 sm:p-14 md:p-16 w-full space-y-8 shadow-md">
+          <div class="grid grid-cols-1 lg:grid-cols-12 gap-10 items-center">
             
             <!-- Left Info Area -->
-            <div class="lg:col-span-7 space-y-5">
-              <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-teal-100/80 text-teal-900 text-xs font-black border border-teal-200">
+            <div class="lg:col-span-7 space-y-6">
+              <div class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-teal-100/90 text-teal-900 text-xs sm:text-sm font-black border border-teal-200 shadow-2xs">
                 <span>🏫 ${info.schoolName}</span>
                 <span>·</span>
                 <span>特殊教育資源</span>
               </div>
-              <h2 class="text-2xl sm:text-3xl md:text-4xl font-black text-teal-950 tracking-tight leading-tight">
+              <h2 class="text-3xl sm:text-4xl md:text-5xl font-black text-teal-950 tracking-tight leading-tight">
                 ${info.portalTitle}
               </h2>
-              <p class="text-slate-600">
+              <p class="text-slate-600 text-base sm:text-lg leading-relaxed">
                 ${info.heroSubtitle}
               </p>
-              <div class="flex flex-wrap items-center gap-3 pt-2">
-                <button type="button" data-goto-tab="iep" class="hero-jump-btn flex items-center gap-2 px-5 py-3 rounded-2xl bg-teal-600 hover:bg-teal-700 text-white font-black text-sm shadow-sm transition">
+              <div class="flex flex-wrap items-center gap-4 pt-2">
+                <button type="button" data-goto-tab="iep" class="hero-jump-btn flex items-center gap-2.5 px-6 py-4 rounded-2xl bg-teal-600 hover:bg-teal-700 text-white font-black text-sm sm:text-base shadow-md transition transform hover:-translate-y-0.5">
                   <span>📅</span>
                   <span>立即預約 IEP 會議</span>
                 </button>
-                <button type="button" data-goto-tab="communication" class="hero-jump-btn flex items-center gap-2 px-5 py-3 rounded-2xl bg-white hover:bg-teal-50 text-teal-900 border-2 border-teal-200 font-black text-sm transition">
+                <button type="button" data-goto-tab="communication" class="hero-jump-btn flex items-center gap-2.5 px-6 py-4 rounded-2xl bg-white hover:bg-teal-50 text-teal-900 border-2 border-teal-200 font-black text-sm sm:text-base shadow-2xs transition transform hover:-translate-y-0.5">
                   <span>💬</span>
                   <span>資源班運作與親師溝通</span>
                 </button>
@@ -480,35 +480,35 @@
             </div>
 
             <!-- Right Shortcut Cards -->
-            <div class="lg:col-span-5 grid grid-cols-1 sm:grid-cols-2 gap-3.5">
-              <button type="button" data-goto-tab="iep" class="hero-jump-btn text-left p-4 rounded-2xl bg-white hover:bg-teal-50/60 border-2 border-teal-200 transition shadow-2xs">
-                <div class="text-2xl mb-1.5">📅</div>
-                <div class="font-black text-teal-950 text-sm">新豐國小IEP會議預約</div>
-                <div class="text-xs text-teal-700 font-bold mt-1">
+            <div class="lg:col-span-5 grid grid-cols-1 sm:grid-cols-2 gap-4">
+              <button type="button" data-goto-tab="iep" class="hero-jump-btn text-left p-5 rounded-2xl bg-white hover:bg-teal-50/60 border-2 border-teal-200 transition shadow-2xs group">
+                <div class="text-3xl mb-2 group-hover:scale-110 transition">📅</div>
+                <div class="font-black text-teal-950 text-sm sm:text-base">新豐國小IEP會議預約</div>
+                <div class="text-xs sm:text-sm text-teal-700 font-bold mt-1.5">
                   線上登記與時段選擇 →
                 </div>
               </button>
 
-              <button type="button" data-goto-tab="referral" class="hero-jump-btn text-left p-4 rounded-2xl bg-white hover:bg-amber-50/60 border-2 border-amber-200 transition shadow-2xs">
-                <div class="text-2xl mb-1.5">📋</div>
-                <div class="font-black text-slate-900 text-sm">鑑定安置提報專區</div>
-                <div class="text-xs text-amber-800 font-bold mt-1">
+              <button type="button" data-goto-tab="referral" class="hero-jump-btn text-left p-5 rounded-2xl bg-white hover:bg-amber-50/60 border-2 border-amber-200 transition shadow-2xs group">
+                <div class="text-3xl mb-2 group-hover:scale-110 transition">📋</div>
+                <div class="font-black text-slate-900 text-sm sm:text-base">鑑定安置提報專區</div>
+                <div class="text-xs sm:text-sm text-amber-800 font-bold mt-1.5">
                   線上調查與 4 大障別基準 →
                 </div>
               </button>
 
-              <button type="button" data-goto-tab="communication" class="hero-jump-btn text-left p-4 rounded-2xl bg-white hover:bg-emerald-50/60 border-2 border-emerald-200 transition shadow-2xs">
-                <div class="text-2xl mb-1.5">💬</div>
-                <div class="font-black text-slate-900 text-sm">資源班運作與親師溝通</div>
-                <div class="text-xs text-emerald-800 font-bold mt-1">
+              <button type="button" data-goto-tab="communication" class="hero-jump-btn text-left p-5 rounded-2xl bg-white hover:bg-emerald-50/60 border-2 border-emerald-200 transition shadow-2xs group">
+                <div class="text-3xl mb-2 group-hover:scale-110 transition">💬</div>
+                <div class="font-black text-slate-900 text-sm sm:text-base">資源班運作與親師溝通</div>
+                <div class="text-xs sm:text-sm text-emerald-800 font-bold mt-1.5">
                   抽離外加與溝通指南 →
                 </div>
               </button>
 
-              <button type="button" data-goto-tab="advocacy" data-goto-subtab="pbs" class="hero-jump-btn text-left p-4 rounded-2xl bg-white hover:bg-purple-50/60 border-2 border-purple-200 transition shadow-2xs">
-                <div class="text-2xl mb-1.5">📂</div>
-                <div class="font-black text-slate-900 text-sm">PBS 行為介入表件</div>
-                <div class="text-xs text-purple-800 font-bold mt-1">
+              <button type="button" data-goto-tab="advocacy" data-goto-subtab="pbs" class="hero-jump-btn text-left p-5 rounded-2xl bg-white hover:bg-purple-50/60 border-2 border-purple-200 transition shadow-2xs group">
+                <div class="text-3xl mb-2 group-hover:scale-110 transition">📂</div>
+                <div class="font-black text-slate-900 text-sm sm:text-base">PBS 行為介入表件</div>
+                <div class="text-xs sm:text-sm text-purple-800 font-bold mt-1.5">
                   ABCR 紀錄表與 8 份表件 →
                 </div>
               </button>
@@ -521,7 +521,7 @@
 
     function renderIepView() {
       return `
-        <div class="warm-card p-6 space-y-4">
+        <div class="warm-card p-6 space-y-4 w-full">
           <div class="flex flex-wrap items-center justify-between gap-3 border-b border-teal-100 pb-4">
             <div class="flex items-center gap-3">
               <span class="w-12 h-12 rounded-2xl bg-teal-100 border border-teal-300 flex items-center justify-center text-2xl">📅</span>
@@ -548,206 +548,208 @@
       const currentCrit = ref.criteriaCategories.find(c => c.id === activeCriteriaId) || ref.criteriaCategories[0];
 
       return `
-        <section class="warm-card p-6 space-y-5">
-          <div class="flex flex-wrap items-center justify-between gap-4 border-b border-teal-100 pb-4">
-            <div class="flex items-center gap-3">
-              <span class="w-12 h-12 rounded-2xl bg-amber-100 border border-amber-300 flex items-center justify-center text-2xl">📋</span>
-              <div>
-                <h2 class="text-xl sm:text-2xl font-black text-slate-900">鑑定提報專區 · 線上調查與各障別表件</h2>
-                <p class="text-xs sm:text-sm text-slate-500">整合校內新個案線上提報調查、鑑定辦法說明手冊及四大障礙類別雲端資料夾</p>
+        <div class="w-full space-y-6">
+          <section class="warm-card p-6 space-y-5 w-full">
+            <div class="flex flex-wrap items-center justify-between gap-4 border-b border-teal-100 pb-4">
+              <div class="flex items-center gap-3">
+                <span class="w-12 h-12 rounded-2xl bg-amber-100 border border-amber-300 flex items-center justify-center text-2xl">📋</span>
+                <div>
+                  <h2 class="text-xl sm:text-2xl font-black text-slate-900">鑑定提報專區 · 線上調查與各障別表件</h2>
+                  <p class="text-xs sm:text-sm text-slate-500">整合校內新個案線上提報調查、鑑定辦法說明手冊及四大障礙類別雲端資料夾</p>
+                </div>
               </div>
-            </div>
-            <a href="${ref.manualPdf.url}" target="_blank" rel="noopener noreferrer"
-              class="px-4 py-2.5 rounded-2xl bg-teal-50 hover:bg-teal-100 text-teal-900 border-2 border-teal-200 font-bold text-xs sm:text-sm transition flex items-center gap-1.5">
-              <span>📕 開啟《${ref.manualPdf.title}》</span>
-              <span>↗</span>
-            </a>
-          </div>
-
-          <div class="bg-gradient-to-r from-amber-50 via-orange-50/70 to-amber-50 border-2 border-amber-300 rounded-2xl p-5 flex flex-col md:flex-row items-start md:items-center justify-between gap-4">
-            <div class="space-y-1">
-              <span class="inline-block text-xs font-black px-2.5 py-0.5 rounded-full bg-amber-200 text-amber-950">
-                🔔 ${ref.mainForm.badge}
-              </span>
-              <h3 class="text-lg font-black text-slate-900 pt-0.5">${ref.mainForm.title}</h3>
-              <p class="text-xs sm:text-sm text-slate-700 leading-relaxed max-w-2xl">${ref.mainForm.description}</p>
-            </div>
-            <div class="shrink-0 w-full md:w-auto">
-              <a href="${ref.mainForm.url}" target="_blank" rel="noopener noreferrer"
-                class="block text-center px-6 py-3 rounded-2xl bg-amber-500 hover:bg-amber-600 text-white font-black text-xs sm:text-sm shadow-xs transition">
-                前往填寫提報表單 ↗
+              <a href="${ref.manualPdf.url}" target="_blank" rel="noopener noreferrer"
+                class="px-4 py-2.5 rounded-2xl bg-teal-50 hover:bg-teal-100 text-teal-900 border-2 border-teal-200 font-bold text-xs sm:text-sm transition flex items-center gap-1.5">
+                <span>📕 開啟《${ref.manualPdf.title}》</span>
+                <span>↗</span>
               </a>
             </div>
-          </div>
 
-          <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3.5">
-            ${ref.cloudFolders.map(folder => `
-              <div class="p-4 rounded-2xl bg-teal-50/50 border-2 border-teal-100 hover:border-teal-300 transition flex flex-col justify-between gap-3">
-                <div>
-                  <div class="flex items-center justify-between">
-                    <span class="text-xs font-bold px-2.5 py-0.5 rounded-full bg-white text-teal-800 border border-teal-200">${folder.categoryBadge}</span>
-                    <span class="text-xl">${folder.icon}</span>
-                  </div>
-                  <h4 class="font-black text-slate-900 text-sm sm:text-base mt-2">${folder.name}</h4>
-                  <p class="text-xs text-slate-600 mt-1 leading-relaxed">${folder.description}</p>
-                </div>
-                <div class="pt-2 border-t border-teal-100">
-                  <a href="${folder.url}" target="_blank" rel="noopener noreferrer"
-                    class="block text-center py-2 px-3 rounded-xl bg-teal-600 hover:bg-teal-700 text-white font-bold text-xs transition">
-                    開啟雲端資料夾 ↗
-                  </a>
-                </div>
-              </div>
-            `).join("")}
-          </div>
-        </section>
-
-        <section class="warm-card p-6 space-y-5">
-          <div class="flex flex-wrap items-center justify-between gap-3 border-b border-teal-100 pb-4">
-            <div>
-              <h3 class="text-base sm:text-lg font-black text-teal-950">
-                🔍 各障礙類別：辦法・鑑定基準・課堂觀察重點・排他因素
-              </h3>
-              <p class="text-xs text-slate-500 mt-0.5">
-                點選上方障別按鈕可切換類別；點選各標題列可展開或收合詳細條文！
-              </p>
-            </div>
-            <div class="flex items-center gap-2">
-              <button type="button" id="btnExpandAllCrit" class="px-3 py-1.5 rounded-xl text-xs font-bold bg-teal-50 hover:bg-teal-100 text-teal-800 border border-teal-200 transition">
-                全部展開 ▼
-              </button>
-              <button type="button" id="btnCollapseAllCrit" class="px-3 py-1.5 rounded-xl text-xs font-bold bg-slate-100 hover:bg-slate-200 text-slate-700 transition">
-                全部收合 ▲
-              </button>
-            </div>
-          </div>
-
-          <div class="flex flex-wrap items-center justify-between gap-3">
-            <div class="flex flex-wrap gap-2">
-              ${ref.criteriaCategories.map(cat => {
-                const isSelected = cat.id === activeCriteriaId;
-                return `
-                  <button type="button" data-crit-id="${cat.id}"
-                    class="crit-tab-btn flex items-center gap-1.5 px-4 py-2.5 rounded-2xl font-black text-xs sm:text-sm border-2 transition ${
-                      isSelected
-                        ? "bg-teal-600 text-white border-teal-700 shadow-xs"
-                        : "bg-white hover:bg-teal-50 text-slate-700 border-teal-100"
-                    }">
-                    <span>${cat.icon}</span>
-                    <span>${cat.shortName}</span>
-                  </button>
-                `;
-              }).join("")}
-            </div>
-
-            <a href="${currentCrit.folderUrl}" target="_blank" rel="noopener noreferrer"
-              class="text-xs sm:text-sm font-bold text-teal-700 hover:text-teal-900 underline">
-              📂 下載「${currentCrit.shortName}」提報表件 ↗
-            </a>
-          </div>
-
-          <div class="bg-teal-50/70 rounded-2xl p-4 border border-teal-200 flex flex-wrap items-center justify-between gap-2">
-            <div class="flex items-center gap-2.5">
-              <span class="text-2xl">${currentCrit.icon}</span>
-              <div>
-                <span class="text-xs font-bold text-teal-700">${currentCrit.legalArticle}</span>
-                <h4 class="text-base sm:text-lg font-black text-teal-950">${currentCrit.title}</h4>
-              </div>
-            </div>
-            <span class="text-xs text-teal-700 font-medium">點擊下方卡片標題可展開／收合</span>
-          </div>
-
-          <div class="space-y-3">
-            <div class="border-2 border-teal-100 rounded-2xl overflow-hidden bg-white">
-              <button type="button" data-acc-key="crit-legal" class="acc-toggle-btn w-full px-5 py-3.5 text-left bg-teal-50/40 hover:bg-teal-50 flex items-center justify-between gap-3 transition">
-                <span class="font-black text-teal-950 text-sm sm:text-base">📘 壹、鑑定辦法定義</span>
-                <span class="text-xs font-bold text-teal-700 bg-white px-2.5 py-1 rounded-full border border-teal-200">
-                  ${openAccordions["crit-legal"] ? "收合 ▲" : "展開 ▼"}
+            <div class="bg-gradient-to-r from-amber-50 via-orange-50/70 to-amber-50 border-2 border-amber-300 rounded-2xl p-5 flex flex-col md:flex-row items-start md:items-center justify-between gap-4">
+              <div class="space-y-1">
+                <span class="inline-block text-xs font-black px-2.5 py-0.5 rounded-full bg-amber-200 text-amber-950">
+                  🔔 ${ref.mainForm.badge}
                 </span>
-              </button>
-              <div class="${openAccordions["crit-legal"] ? "block" : "hidden"} px-5 py-4 border-t border-teal-100">
-                <p class="text-slate-700 leading-relaxed">${currentCrit.legalDefinition}</p>
+                <h3 class="text-lg font-black text-slate-900 pt-0.5">${ref.mainForm.title}</h3>
+                <p class="text-xs sm:text-sm text-slate-700 leading-relaxed max-w-3xl">${ref.mainForm.description}</p>
+              </div>
+              <div class="shrink-0 w-full md:w-auto">
+                <a href="${ref.mainForm.url}" target="_blank" rel="noopener noreferrer"
+                  class="block text-center px-6 py-3 rounded-2xl bg-amber-500 hover:bg-amber-600 text-white font-black text-xs sm:text-sm shadow-xs transition">
+                  前往填寫提報表單 ↗
+                </a>
               </div>
             </div>
 
-            <div class="border-2 border-teal-100 rounded-2xl overflow-hidden bg-white">
-              <button type="button" data-acc-key="crit-points" class="acc-toggle-btn w-full px-5 py-3.5 text-left bg-teal-50/40 hover:bg-teal-50 flex items-center justify-between gap-3 transition">
-                <span class="font-black text-teal-950 text-sm sm:text-base">⚖️ 貳、鑑定基準與主要表現類型（共 ${currentCrit.criteriaPoints.length} 款基準）</span>
-                <span class="text-xs font-bold text-teal-700 bg-white px-2.5 py-1 rounded-full border border-teal-200">
-                  ${openAccordions["crit-points"] ? "收合 ▲" : "展開 ▼"}
-                </span>
-              </button>
-              <div class="${openAccordions["crit-points"] ? "block" : "hidden"} px-5 py-4 border-t border-teal-100 space-y-4">
-                <p class="text-xs sm:text-sm text-slate-600 font-bold">${currentCrit.criteriaIntro}</p>
-                <ul class="space-y-2 text-slate-800">
-                  ${currentCrit.criteriaPoints.map(pt => `
-                    <li class="p-3 rounded-xl bg-teal-50/50 border border-teal-100 leading-relaxed">${pt}</li>
-                  `).join("")}
-                </ul>
-                <div class="grid grid-cols-1 sm:grid-cols-2 gap-3 pt-1">
-                  ${currentCrit.subtypes.map(sub => `
-                    <div class="p-3.5 rounded-xl bg-amber-50/60 border border-amber-200">
-                      <div class="font-black text-amber-950 text-xs sm:text-sm">${sub.name}</div>
-                      <div class="text-xs text-slate-700 mt-1 leading-relaxed">${sub.desc}</div>
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3.5">
+              ${ref.cloudFolders.map(folder => `
+                <div class="p-4 rounded-2xl bg-teal-50/50 border-2 border-teal-100 hover:border-teal-300 transition flex flex-col justify-between gap-3">
+                  <div>
+                    <div class="flex items-center justify-between">
+                      <span class="text-xs font-bold px-2.5 py-0.5 rounded-full bg-white text-teal-800 border border-teal-200">${folder.categoryBadge}</span>
+                      <span class="text-xl">${folder.icon}</span>
                     </div>
-                  `).join("")}
+                    <h4 class="font-black text-slate-900 text-sm sm:text-base mt-2">${folder.name}</h4>
+                    <p class="text-xs text-slate-600 mt-1 leading-relaxed">${folder.description}</p>
+                  </div>
+                  <div class="pt-2 border-t border-teal-100">
+                    <a href="${folder.url}" target="_blank" rel="noopener noreferrer"
+                      class="block text-center py-2 px-3 rounded-xl bg-teal-600 hover:bg-teal-700 text-white font-bold text-xs transition">
+                      開啟雲端資料夾 ↗
+                    </a>
+                  </div>
                 </div>
+              `).join("")}
+            </div>
+          </section>
+
+          <section class="warm-card p-6 space-y-5 w-full">
+            <div class="flex flex-wrap items-center justify-between gap-3 border-b border-teal-100 pb-4">
+              <div>
+                <h3 class="text-base sm:text-lg font-black text-teal-950">
+                  🔍 各障礙類別：辦法・鑑定基準・課堂觀察重點・排他因素
+                </h3>
+                <p class="text-xs text-slate-500 mt-0.5">
+                  點選上方障別按鈕可切換類別；點選各標題列可展開或收合詳細條文！
+                </p>
+              </div>
+              <div class="flex items-center gap-2">
+                <button type="button" id="btnExpandAllCrit" class="px-3 py-1.5 rounded-xl text-xs font-bold bg-teal-50 hover:bg-teal-100 text-teal-800 border border-teal-200 transition">
+                  全部展開 ▼
+                </button>
+                <button type="button" id="btnCollapseAllCrit" class="px-3 py-1.5 rounded-xl text-xs font-bold bg-slate-100 hover:bg-slate-200 text-slate-700 transition">
+                  全部收合 ▲
+                </button>
               </div>
             </div>
 
-            <div class="border-2 border-teal-100 rounded-2xl overflow-hidden bg-white">
-              <button type="button" data-acc-key="crit-obs" class="acc-toggle-btn w-full px-5 py-3.5 text-left bg-teal-50/40 hover:bg-teal-50 flex items-center justify-between gap-3 transition">
-                <span class="font-black text-teal-950 text-sm sm:text-base">👀 參、導師課堂觀察重點（共 ${currentCrit.observationGroups.length} 大觀察面向）</span>
-                <span class="text-xs font-bold text-teal-700 bg-white px-2.5 py-1 rounded-full border border-teal-200">
-                  ${openAccordions["crit-obs"] ? "收合 ▲" : "展開詳情 ▼"}
-                </span>
-              </button>
-              <div class="${openAccordions["crit-obs"] ? "block" : "hidden"} px-5 py-4 border-t border-teal-100">
-                <div class="grid grid-cols-1 md:grid-cols-2 gap-3.5">
-                  ${currentCrit.observationGroups.map(grp => `
-                    <div class="bg-slate-50 rounded-xl border border-slate-200 p-4 space-y-2">
-                      <h5 class="font-black text-teal-900 text-xs sm:text-sm border-b border-slate-200 pb-1.5">${grp.groupTitle}</h5>
+            <div class="flex flex-wrap items-center justify-between gap-3">
+              <div class="flex flex-wrap gap-2">
+                ${ref.criteriaCategories.map(cat => {
+                  const isSelected = cat.id === activeCriteriaId;
+                  return `
+                    <button type="button" data-crit-id="${cat.id}"
+                      class="crit-tab-btn flex items-center gap-1.5 px-4 py-2.5 rounded-2xl font-black text-xs sm:text-sm border-2 transition ${
+                        isSelected
+                          ? "bg-teal-600 text-white border-teal-700 shadow-xs"
+                          : "bg-white hover:bg-teal-50 text-slate-700 border-teal-100"
+                      }">
+                      <span>${cat.icon}</span>
+                      <span>${cat.shortName}</span>
+                    </button>
+                  `;
+                }).join("")}
+              </div>
+
+              <a href="${currentCrit.folderUrl}" target="_blank" rel="noopener noreferrer"
+                class="text-xs sm:text-sm font-bold text-teal-700 hover:text-teal-900 underline">
+                📂 下載「${currentCrit.shortName}」提報表件 ↗
+              </a>
+            </div>
+
+            <div class="bg-teal-50/70 rounded-2xl p-4 border border-teal-200 flex flex-wrap items-center justify-between gap-2">
+              <div class="flex items-center gap-2.5">
+                <span class="text-2xl">${currentCrit.icon}</span>
+                <div>
+                  <span class="text-xs font-bold text-teal-700">${currentCrit.legalArticle}</span>
+                  <h4 class="text-base sm:text-lg font-black text-teal-950">${currentCrit.title}</h4>
+                </div>
+              </div>
+              <span class="text-xs text-teal-700 font-medium">點擊下方卡片標題可展開／收合</span>
+            </div>
+
+            <div class="space-y-3">
+              <div class="border-2 border-teal-100 rounded-2xl overflow-hidden bg-white">
+                <button type="button" data-acc-key="crit-legal" class="acc-toggle-btn w-full px-5 py-3.5 text-left bg-teal-50/40 hover:bg-teal-50 flex items-center justify-between gap-3 transition">
+                  <span class="font-black text-teal-950 text-sm sm:text-base">📘 壹、鑑定辦法定義</span>
+                  <span class="text-xs font-bold text-teal-700 bg-white px-2.5 py-1 rounded-full border border-teal-200 acc-badge-legal">
+                    ${openAccordions["crit-legal"] ? "收合 ▲" : "展開 ▼"}
+                  </span>
+                </button>
+                <div id="acc-content-crit-legal" class="${openAccordions["crit-legal"] ? "block" : "hidden"} px-5 py-4 border-t border-teal-100">
+                  <p class="text-slate-700 leading-relaxed">${currentCrit.legalDefinition}</p>
+                </div>
+              </div>
+
+              <div class="border-2 border-teal-100 rounded-2xl overflow-hidden bg-white">
+                <button type="button" data-acc-key="crit-points" class="acc-toggle-btn w-full px-5 py-3.5 text-left bg-teal-50/40 hover:bg-teal-50 flex items-center justify-between gap-3 transition">
+                  <span class="font-black text-teal-950 text-sm sm:text-base">⚖️ 貳、鑑定基準與主要表現類型（共 ${currentCrit.criteriaPoints.length} 款基準）</span>
+                  <span class="text-xs font-bold text-teal-700 bg-white px-2.5 py-1 rounded-full border border-teal-200 acc-badge-points">
+                    ${openAccordions["crit-points"] ? "收合 ▲" : "展開 ▼"}
+                  </span>
+                </button>
+                <div id="acc-content-crit-points" class="${openAccordions["crit-points"] ? "block" : "hidden"} px-5 py-4 border-t border-teal-100 space-y-4">
+                  <p class="text-xs sm:text-sm text-slate-600 font-bold">${currentCrit.criteriaIntro}</p>
+                  <ul class="space-y-2 text-slate-800">
+                    ${currentCrit.criteriaPoints.map(pt => `
+                      <li class="p-3 rounded-xl bg-teal-50/50 border border-teal-100 leading-relaxed">${pt}</li>
+                    `).join("")}
+                  </ul>
+                  <div class="grid grid-cols-1 sm:grid-cols-2 gap-3 pt-1">
+                    ${currentCrit.subtypes.map(sub => `
+                      <div class="p-3.5 rounded-xl bg-amber-50/60 border border-amber-200">
+                        <div class="font-black text-amber-950 text-xs sm:text-sm">${sub.name}</div>
+                        <div class="text-xs text-slate-700 mt-1 leading-relaxed">${sub.desc}</div>
+                      </div>
+                    `).join("")}
+                  </div>
+                </div>
+              </div>
+
+              <div class="border-2 border-teal-100 rounded-2xl overflow-hidden bg-white">
+                <button type="button" data-acc-key="crit-obs" class="acc-toggle-btn w-full px-5 py-3.5 text-left bg-teal-50/40 hover:bg-teal-50 flex items-center justify-between gap-3 transition">
+                  <span class="font-black text-teal-950 text-sm sm:text-base">👀 參、導師課堂觀察重點（共 ${currentCrit.observationGroups.length} 大觀察面向）</span>
+                  <span class="text-xs font-bold text-teal-700 bg-white px-2.5 py-1 rounded-full border border-teal-200 acc-badge-obs">
+                    ${openAccordions["crit-obs"] ? "收合 ▲" : "展開詳情 ▼"}
+                  </span>
+                </button>
+                <div id="acc-content-crit-obs" class="${openAccordions["crit-obs"] ? "block" : "hidden"} px-5 py-4 border-t border-teal-100">
+                  <div class="grid grid-cols-1 md:grid-cols-2 gap-3.5">
+                    ${currentCrit.observationGroups.map(grp => `
+                      <div class="bg-slate-50 rounded-xl border border-slate-200 p-4 space-y-2">
+                        <h5 class="font-black text-teal-900 text-xs sm:text-sm border-b border-slate-200 pb-1.5">${grp.groupTitle}</h5>
+                        <ul class="space-y-1.5 text-xs sm:text-sm text-slate-700">
+                          ${grp.items.map(item => `<li class="leading-relaxed">• ${item}</li>`).join("")}
+                        </ul>
+                      </div>
+                    `).join("")}
+                  </div>
+                </div>
+              </div>
+
+              <div class="border-2 border-teal-100 rounded-2xl overflow-hidden bg-white">
+                <button type="button" data-acc-key="crit-excl" class="acc-toggle-btn w-full px-5 py-3.5 text-left bg-teal-50/40 hover:bg-teal-50 flex items-center justify-between gap-3 transition">
+                  <span class="font-black text-teal-950 text-sm sm:text-base">📌 肆、排他因素與轉介前介入（RTI）應備事項</span>
+                  <span class="text-xs font-bold text-teal-700 bg-white px-2.5 py-1 rounded-full border border-teal-200 acc-badge-excl">
+                    ${openAccordions["crit-excl"] ? "收合 ▲" : "展開詳情 ▼"}
+                  </span>
+                </button>
+                <div id="acc-content-crit-excl" class="${openAccordions["crit-excl"] ? "block" : "hidden"} px-5 py-4 border-t border-teal-100">
+                  <div class="grid grid-cols-1 lg:grid-cols-2 gap-4">
+                    <div class="bg-rose-50/60 border border-rose-200 rounded-xl p-4 space-y-2">
+                      <div class="text-xs font-black text-rose-900">🚫 排他因素（須排除下列直接原因）</div>
                       <ul class="space-y-1.5 text-xs sm:text-sm text-slate-700">
-                        ${grp.items.map(item => `<li class="leading-relaxed">• ${item}</li>`).join("")}
+                        ${currentCrit.exclusionFactors.map(ex => `<li class="leading-relaxed">• ${ex}</li>`).join("")}
                       </ul>
                     </div>
-                  `).join("")}
-                </div>
-              </div>
-            </div>
-
-            <div class="border-2 border-teal-100 rounded-2xl overflow-hidden bg-white">
-              <button type="button" data-acc-key="crit-excl" class="acc-toggle-btn w-full px-5 py-3.5 text-left bg-teal-50/40 hover:bg-teal-50 flex items-center justify-between gap-3 transition">
-                <span class="font-black text-teal-950 text-sm sm:text-base">📌 肆、排他因素與轉介前介入（RTI）應備事項</span>
-                <span class="text-xs font-bold text-teal-700 bg-white px-2.5 py-1 rounded-full border border-teal-200">
-                  ${openAccordions["crit-excl"] ? "收合 ▲" : "展開詳情 ▼"}
-                </span>
-              </button>
-              <div class="${openAccordions["crit-excl"] ? "block" : "hidden"} px-5 py-4 border-t border-teal-100">
-                <div class="grid grid-cols-1 lg:grid-cols-2 gap-4">
-                  <div class="bg-rose-50/60 border border-rose-200 rounded-xl p-4 space-y-2">
-                    <div class="text-xs font-black text-rose-900">🚫 排他因素（須排除下列直接原因）</div>
-                    <ul class="space-y-1.5 text-xs sm:text-sm text-slate-700">
-                      ${currentCrit.exclusionFactors.map(ex => `<li class="leading-relaxed">• ${ex}</li>`).join("")}
-                    </ul>
-                  </div>
-                  <div class="bg-emerald-50/60 border border-emerald-200 rounded-xl p-4 space-y-2">
-                    <div class="text-xs font-black text-emerald-900">✅ 轉介前介入與提報應備佐證</div>
-                    <ul class="space-y-1.5 text-xs sm:text-sm text-slate-700">
-                      ${currentCrit.referralRequirements.map(req => `<li class="leading-relaxed">• ${req}</li>`).join("")}
-                    </ul>
+                    <div class="bg-emerald-50/60 border border-emerald-200 rounded-xl p-4 space-y-2">
+                      <div class="text-xs font-black text-emerald-900">✅ 轉介前介入與提報應備佐證</div>
+                      <ul class="space-y-1.5 text-xs sm:text-sm text-slate-700">
+                        ${currentCrit.referralRequirements.map(req => `<li class="leading-relaxed">• ${req}</li>`).join("")}
+                      </ul>
+                    </div>
                   </div>
                 </div>
               </div>
             </div>
-          </div>
-        </section>
+          </section>
+        </div>
       `;
     }
 
     function renderCommunicationView() {
       return `
-        <section class="warm-card p-6 sm:p-8 space-y-6">
+        <section class="warm-card p-6 sm:p-8 space-y-6 w-full">
           <div class="border-b border-teal-100 pb-4 flex items-center gap-3">
             <span class="w-12 h-12 rounded-2xl bg-teal-100 border border-teal-300 flex items-center justify-center text-2xl">💬</span>
             <div>
@@ -857,7 +859,7 @@
               <div class="space-y-2.5 text-xs sm:text-sm text-slate-700">
                 <div class="p-3 bg-white rounded-xl border border-slate-200 space-y-1">
                   <div class="font-bold text-rose-800">抗拒 1：「我的孩子很正常，他只是比較慢，不需要去資源班！」</div>
-                  <div class="text-slate-600"><strong>溫柔回應</strong>：「對呀，他真的很棒!正因為他很努力，我們才更心疼他每天花三倍時間寫功課。去資源班不是因為他不好，而是去能根據他的需求，去找到適合的學習方式，更快樂的學習。」</div>
+                  <div class="text-slate-600"><strong>溫柔回應</strong>：「對呀，他真的很棒！正因為他很努力，我們才更心疼他每天花三倍時間寫功課。去資源班不是因為他不好，而是去能根據他的需求，去找到適合的學習方式，更快樂的學習。」</div>
                 </div>
                 <div class="p-3 bg-white rounded-xl border border-slate-200 space-y-1">
                   <div class="font-bold text-rose-800">抗拒 2：「去資源班會不會被同學笑？會不會被貼標籤？」</div>
@@ -1086,7 +1088,7 @@
 
     function renderAdvocacyView() {
       return `
-        <section class="warm-card p-6 space-y-5">
+        <section class="warm-card p-6 space-y-5 w-full">
           <div class="border-b border-teal-100 pb-4 flex flex-wrap items-center justify-between gap-2">
             <div class="flex items-center gap-3">
               <span class="w-11 h-11 rounded-2xl bg-teal-100 border border-teal-200 flex items-center justify-center text-2xl">💡</span>
@@ -1128,7 +1130,7 @@
         : links.filter(l => l.category === activeLinksFilter);
 
       return `
-        <section class="warm-card p-6 space-y-5">
+        <section class="warm-card p-6 space-y-5 w-full">
           <div class="flex flex-wrap items-center justify-between gap-3 border-b border-teal-100 pb-4">
             <div class="flex items-center gap-3">
               <span class="w-11 h-11 rounded-2xl bg-teal-100 border border-teal-200 flex items-center justify-center text-2xl">🔗</span>
@@ -1202,7 +1204,20 @@
           const key = btn.getAttribute("data-acc-key");
           if (key) {
             openAccordions[key] = !openAccordions[key];
-            renderMainViewport();
+            const contentEl = document.getElementById(`acc-content-${key}`);
+            const badgeEl = btn.querySelector(`.acc-badge-${key.replace('crit-', '')}`);
+            if (contentEl) {
+              if (openAccordions[key]) {
+                contentEl.classList.remove("hidden");
+                contentEl.classList.add("block");
+              } else {
+                contentEl.classList.remove("block");
+                contentEl.classList.add("hidden");
+              }
+            }
+            if (badgeEl) {
+              badgeEl.textContent = openAccordions[key] ? "收合 ▲" : "展開 ▼";
+            }
           }
         });
       });
@@ -1210,21 +1225,25 @@
       const btnExpandAll = document.getElementById("btnExpandAllCrit");
       if (btnExpandAll) {
         btnExpandAll.addEventListener("click", () => {
-          openAccordions["crit-legal"] = true;
-          openAccordions["crit-points"] = true;
-          openAccordions["crit-obs"] = true;
-          openAccordions["crit-excl"] = true;
-          renderMainViewport();
+          ["legal", "points", "obs", "excl"].forEach(k => {
+            openAccordions[`crit-${k}`] = true;
+            const el = document.getElementById(`acc-content-crit-${k}`);
+            const bg = document.querySelector(`.acc-badge-${k}`);
+            if (el) { el.classList.remove("hidden"); el.classList.add("block"); }
+            if (bg) { bg.textContent = "收合 ▲"; }
+          });
         });
       }
       const btnCollapseAll = document.getElementById("btnCollapseAllCrit");
       if (btnCollapseAll) {
         btnCollapseAll.addEventListener("click", () => {
-          openAccordions["crit-legal"] = false;
-          openAccordions["crit-points"] = false;
-          openAccordions["crit-obs"] = false;
-          openAccordions["crit-excl"] = false;
-          renderMainViewport();
+          ["legal", "points", "obs", "excl"].forEach(k => {
+            openAccordions[`crit-${k}`] = false;
+            const el = document.getElementById(`acc-content-crit-${k}`);
+            const bg = document.querySelector(`.acc-badge-${k}`);
+            if (el) { el.classList.remove("block"); el.classList.add("hidden"); }
+            if (bg) { bg.textContent = "展開 ▼"; }
+          });
         });
       }
 
